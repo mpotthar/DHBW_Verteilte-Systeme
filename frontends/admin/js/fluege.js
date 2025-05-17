@@ -3,14 +3,6 @@
 const FLIGHTS_API_BASE_URL = 'http://localhost:3002/api';
 let flightsData = [];
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('fluegeSeite')) { // Optional: falls du die Datei auf mehreren Seiten einbindest
-        loadFlights();
-        document.getElementById('flightFilter').addEventListener('keyup', filterFlights);
-        document.getElementById('sortOrderFlights').addEventListener('change', filterFlights);
-    }
-});
-
 function loadFlights() {
     document.getElementById("mainContent").innerHTML = `
         <h2>Flugverbindungen</h2>
@@ -48,6 +40,9 @@ function loadFlights() {
         <div id="flightFormContainer"></div>
         <div id="statusMessageFlights" class="alert d-none mt-3"></div>
     `;
+
+    // Event-Listener für die Suche nach dem Rendern setzen!
+    document.getElementById('flightFilter').addEventListener('keyup', filterFlights);
 
     fetchFlights();
 }
@@ -173,7 +168,6 @@ function showFlightForm(flight = null) {
 function toInputDateTime(dateString) {
     if (!dateString) return '';
     const date = new Date(dateString);
-    // Format: yyyy-MM-ddTHH:mm (für input[type=datetime-local])
     const pad = n => n < 10 ? '0' + n : n;
     return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
@@ -242,14 +236,11 @@ async function deleteFlight(id) {
 
 function filterFlights() {
     const filter = document.getElementById("flightFilter").value.toUpperCase();
-    // Optional: sortieren nach Preis, Start, Ziel etc.
-    // Hier kannst du eine Sortierfunktion ergänzen, z.B. nach Abflugdatum oder Preis
     let filtered = flightsData.filter(flight =>
-        flight.start.toUpperCase().includes(filter) ||
-        flight.ziel.toUpperCase().includes(filter) ||
-        flight.fluggesellschaft.toUpperCase().includes(filter) ||
-        flight.flugnummer.toUpperCase().includes(filter)
+        (flight.start && flight.start.toUpperCase().includes(filter)) ||
+        (flight.ziel && flight.ziel.toUpperCase().includes(filter)) ||
+        (flight.fluggesellschaft && flight.fluggesellschaft.toUpperCase().includes(filter)) ||
+        (flight.flugnummer && flight.flugnummer.toUpperCase().includes(filter))
     );
-    // Optional: Sortierung nach Preis oder Abflugzeit einbauen
     displayFlights(filtered);
 }
