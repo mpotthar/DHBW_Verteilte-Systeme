@@ -22,7 +22,7 @@ function loadModule(module) {
             loadBewertungen();
             break;
         case "fluege":
-            loadFluege();
+            loadFlights();
             break;
         case "mietwagen":
             loadMietwagen();
