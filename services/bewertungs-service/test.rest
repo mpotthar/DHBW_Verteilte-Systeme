@@ -1,0 +1,79 @@
+### Variablen
+@baseUrl = http://localhost:3003/api
+@contentType = application/json
+
+### Alle Bewertungen anzeigen
+GET {{baseUrl}}/reviews
+Content-Type: {{contentType}}
+
+### Bewertungen für Hotels anzeigen
+GET {{baseUrl}}/reviews?typ=hotel
+Content-Type: {{contentType}}
+
+### Bewertungen für ein bestimmtes Hotel anzeigen
+GET {{baseUrl}}/reviews?typ=hotel&id=1
+Content-Type: {{contentType}}
+
+### Neue Bewertung erstellen für ein Hotel
+POST {{baseUrl}}/reviews
+Content-Type: {{contentType}}
+
+{
+  "nameRezensent": "Max Mustermann",
+  "titel": "Tolles Hotel am See",
+  "beschreibung": "Wir hatten einen wunderbaren Aufenthalt im Seehotel Sonnenblick. Das Personal war freundlich und das Frühstück exzellent.",
+  "sterne": 5,
+  "dienstleistungsTyp": "hotel",
+  "dienstleistungsId": "1",
+  "dienstleistungsName": "Seehotel Sonnenblick"
+}
+
+### Neue Bewertung erstellen für einen Flug
+POST {{baseUrl}}/reviews
+Content-Type: {{contentType}}
+
+{
+  "nameRezensent": "Anna Schmidt",
+  "titel": "Pünktlicher Flug",
+  "beschreibung": "Der Flug war pünktlich und das Personal an Bord sehr zuvorkommend.",
+  "sterne": 4,
+  "dienstleistungsTyp": "flug",
+  "dienstleistungsId": "1",
+  "dienstleistungsName": "Lufthansa LH123"
+}
+
+### Neue Bewertung erstellen für einen Mietwagen
+POST {{baseUrl}}/reviews
+Content-Type: {{contentType}}
+
+{
+  "nameRezensent": "Thomas Müller",
+  "titel": "Zuverlässiger Mietwagen",
+  "beschreibung": "Der Wagen war in einem sehr guten Zustand und die Übergabe verlief reibungslos.",
+  "sterne": 4,
+  "dienstleistungsTyp": "mietwagen",
+  "dienstleistungsId": "1",
+  "dienstleistungsName": "Audi A4 Kombi"
+}
+
+### Eine bestimmte Bewertung anzeigen (ID nach Erstellung ersetzen)
+GET {{baseUrl}}/reviews/REVIEW_ID_HIER_EINSETZEN
+Content-Type: {{contentType}}
+
+### Eine Bewertung aktualisieren (ID nach Erstellung ersetzen)
+PUT {{baseUrl}}/reviews/REVIEW_ID_HIER_EINSETZEN
+Content-Type: {{contentType}}
+
+{
+  "nameRezensent": "Max Mustermann",
+  "titel": "Aktualisiert: Tolles Hotel am See",
+  "beschreibung": "Aktualisierte Beschreibung: Wir hatten einen wunderbaren Aufenthalt.",
+  "sterne": 5,
+  "dienstleistungsTyp": "hotel",
+  "dienstleistungsId": "1",
+  "dienstleistungsName": "Seehotel Sonnenblick"
+}
+
+### Eine Bewertung löschen (ID nach Erstellung ersetzen)
+DELETE {{baseUrl}}/reviews/REVIEW_ID_HIER_EINSETZEN
+Content-Type: {{contentType}}
