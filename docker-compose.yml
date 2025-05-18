@@ -1,0 +1,101 @@
+services:
+  # Nginx Webserver für die Frontends
+  nginx:
+    build: ./nginx
+    container_name: mein-urlaub-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - hotel-service
+      - bewertungs-service
+      - flug-service
+      - mietwagen-service
+    networks:
+      - frontend-network
+      - backend-network
+
+  # MongoDB Services
+  mongo-hotel:
+    image: mongo
+    container_name: mein-urlaub-mongo-hotel
+    volumes:
+      - mongo-hotel-data:/data/db
+    networks:
+      - backend-network
+
+  mongo-bewertungen:
+    image: mongo
+    container_name: mein-urlaub-mongo-bewertungen
+    volumes:
+      - mongo-bewertungen-data:/data/db
+    networks:
+      - backend-network
+
+  mongo-flug:
+    image: mongo
+    container_name: mein-urlaub-mongo-flug
+    volumes:
+      - mongo-flug-data:/data/db
+    networks:
+      - backend-network
+
+  mongo-mietwagen:
+    image: mongo
+    container_name: mein-urlaub-mongo-mietwagen
+    volumes:
+      - mongo-mietwagen-data:/data/db
+    networks:
+      - backend-network
+
+  # Microservices
+  hotel-service:
+    build: ./services/hotel-service
+    container_name: mein-urlaub-hotel-service
+    environment:
+      - MONGODB_URI=mongodb://mongo-hotel:27017/hotel-service
+    depends_on:
+      - mongo-hotel
+    networks:
+      - backend-network
+
+  bewertungs-service:
+    build: ./services/bewertungs-service
+    container_name: mein-urlaub-bewertungs-service
+    environment:
+      - MONGODB_URI=mongodb://mongo-bewertungen:27017/bewertungs-service
+    depends_on:
+      - mongo-bewertungen
+    networks:
+      - backend-network
+
+  flug-service:
+    build: ./services/flugverbindung-service
+    container_name: mein-urlaub-flug-service
+    environment:
+      - MONGODB_URI=mongodb://mongo-flug:27017/flug-service
+    depends_on:
+      - mongo-flug
+    networks:
+      - backend-network
+
+  mietwagen-service:
+    build: ./services/mietwagen-service
+    container_name: mein-urlaub-mietwagen-service
+    environment:
+      - MONGODB_URI=mongodb://mongo-mietwagen:27017/mietwagen-service
+    depends_on:
+      - mongo-mietwagen
+    networks:
+      - backend-network
+
+networks:
+  frontend-network:
+  backend-network:
+
+volumes:
+  mongo-hotel-data:
+  mongo-bewertungen-data:
+  mongo-flug-data:
+  mongo-mietwagen-data:

@@ -33,7 +33,7 @@ app.listen(PORT, () => {
 
 // Frontend Kommunikation
 app.use(cors({
-    origin: ['http://localhost:5501', 'http://127.0.0.1:5501'], // URLs des Admin-Frontends
+    origin: ['*'], // URLs des Admin-Frontends
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type']
 }));
