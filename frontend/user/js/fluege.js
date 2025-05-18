@@ -12,7 +12,8 @@ async function loadFlights() {
         const response = await fetch(`${FLIGHTS_API_BASE_URL}/flights`);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         flightsData = await response.json();
-        displayFlights(flightsData);
+        filterFlights();
+        // displayFlights(flightsData);
     } catch (error) {
         document.getElementById('flightCards').innerHTML =
             `<div class="col-12 text-center">

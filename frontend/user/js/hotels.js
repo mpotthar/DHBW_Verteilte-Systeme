@@ -13,7 +13,8 @@ async function loadHotels() {
         const response = await fetch(`${API_BASE_URL}/hotels`);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         hotelsData = await response.json();
-        displayHotels(hotelsData);
+        filterHotels();
+        // displayHotels(hotelsData);
     } catch (error) {
         document.getElementById('hotelCards').innerHTML =
             `<div class="col-12 text-center">
