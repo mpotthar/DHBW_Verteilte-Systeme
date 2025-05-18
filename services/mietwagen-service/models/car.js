@@ -29,10 +29,7 @@ const carSchema = new mongoose.Schema({
   versicherung: {
     type: String,
     required: true,
-    enum: [
-      'Vollkasko ohne Selbstbeteiligung',
-      'Vollkasko mit 1000 Selbstbeteiligung'
-    ]
+    trim: true
   },
   mietpreis_pro_24h: {
     type: Number,

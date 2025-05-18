@@ -38,7 +38,7 @@ function displayCars(cars) {
         <div class="col-md-6 col-lg-4 mb-4">
             <div class="card h-100">
                 <div class="badge-price">${car.mietpreis_pro_24h} € / Tag</div>
-                <img src="${car.bild_url && car.bild_url.length > 0 ? car.bild_url[0] : 'img/header_car.jpg'}" class="card-img-top" alt="${car.hersteller} ${car.modell}">
+                <img src="${car.bild_url || 'img/header_car.jpg'}" class="card-img-top" alt="${car.hersteller} ${car.modell}">
                 <div class="card-body">
                     <h5 class="card-title">${car.hersteller} ${car.modell}</h5>
                     <p class="mb-1"><i class="bi bi-car-front feature-icon"></i> <strong>Typ:</strong> ${car.typ}</p>
