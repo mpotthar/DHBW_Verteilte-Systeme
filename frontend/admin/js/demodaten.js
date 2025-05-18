@@ -181,21 +181,21 @@ function getDemoDataForService(serviceName) {
             return [
                 {
                     name: "Seehotel Sonnenschein",
-                    ort: "Bodensee",
+                    ort: "Hamburg",
                     sterne: 4,
                     zimmerzahl: 120,
-                    preis: 150.00,
-                    beschreibung: "Wunderschönes Hotel direkt am Bodensee mit Panoramablick.",
-                    bilder: ["https://source.unsplash.com/random/800x600/?hotel,lake"]
+                    preis: 99.00,
+                    beschreibung: "Wunderschönes Hotel direkt an der Binnenalster mit Panoramablick.",
+                    bilder: ["/img/demo/hotel_1.jpg"]
                 },
                 {
-                    name: "Bergblick Resort",
-                    ort: "Garmisch",
+                    name: "Strandhotel Binz",
+                    ort: "Rügen",
                     sterne: 5,
-                    zimmerzahl: 85,
+                    zimmerzahl: 150,
                     preis: 220.00,
-                    beschreibung: "Luxuriöses Resort in den Alpen mit erstklassigem Wellnessbereich.",
-                    bilder: ["https://source.unsplash.com/random/800x600/?hotel,mountain"]
+                    beschreibung: "Luxuriöses Wellnesshotel in Binz auf Rügen in direkter Strandnähe mit Blick auf die Ostsee.",
+                    bilder: ["/img/demo/hotel_2.jpg"]
                 },
                 {
                     name: "Stadthotel Zentrum",
@@ -204,7 +204,7 @@ function getDemoDataForService(serviceName) {
                     zimmerzahl: 65,
                     preis: 95.00,
                     beschreibung: "Zentral gelegenes Hotel in der Nähe aller wichtigen Sehenswürdigkeiten.",
-                    bilder: ["https://source.unsplash.com/random/800x600/?hotel,city"]
+                    bilder: ["/img/demo/hotel_3.jpg"]
                 }
             ];
         
@@ -213,7 +213,7 @@ function getDemoDataForService(serviceName) {
                 {
                     nameRezensent: "Max Mustermann",
                     titel: "Toller Aufenthalt im Seehotel",
-                    beschreibung: "Das Hotel übertraf alle Erwartungen. Der Service war ausgezeichnet und das Frühstück vielfältig.",
+                    beschreibung: "Das Hotel übertraf alle Erwartungen. Der Service war ausgezeichnet und das Frühstück vielfältig. Ich würde jederzeit wiederkommen!",
                     sterne: 5,
                     dienstleistungsTyp: "hotel",
                     datum: new Date().toISOString()
@@ -229,7 +229,7 @@ function getDemoDataForService(serviceName) {
                 {
                     nameRezensent: "Thomas Müller",
                     titel: "Zuverlässiger Mietwagen",
-                    beschreibung: "Die Abholung und Abgabe des Mietwagens verlief problemlos. Das Auto war in einem top Zustand.",
+                    beschreibung: "Die Abholung und Abgabe des Mietwagens verlief problemlos. Das Auto war in einem TOP Zustand.",
                     sterne: 5,
                     dienstleistungsTyp: "mietwagen",
                     datum: new Date().toISOString()
@@ -277,7 +277,7 @@ function getDemoDataForService(serviceName) {
                     getriebe: "Automatik",
                     versicherung: "Vollkasko ohne Selbstbeteiligung",
                     mietpreis_pro_24h: 59.99,
-                    bild_url: "https://source.unsplash.com/random/800x600/?vw,golf"
+                    bild_url: "/img/demo/auto_1.jpg"
                 },
                 {
                     typ: "Transporter",
@@ -287,7 +287,7 @@ function getDemoDataForService(serviceName) {
                     getriebe: "Manuell",
                     versicherung: "Vollkasko mit 1000 Selbstbeteiligung",
                     mietpreis_pro_24h: 89.99,
-                    bild_url: "https://source.unsplash.com/random/800x600/?mercedes,van"
+                    bild_url: "/img/demo/auto_2.jpg"
                 },
                 {
                     typ: "SUV",
@@ -297,7 +297,7 @@ function getDemoDataForService(serviceName) {
                     getriebe: "Automatik",
                     versicherung: "Vollkasko ohne Selbstbeteiligung",
                     mietpreis_pro_24h: 119.99,
-                    bild_url: "https://source.unsplash.com/random/800x600/?audi,suv"
+                    bild_url: "/img/demo/auto_3.jpg"
                 }
             ];
         
