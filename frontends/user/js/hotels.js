@@ -1,5 +1,3 @@
-// js/hotels.js
-
 const API_BASE_URL = 'http://localhost:3001/api';
 let hotelsData = [];
 

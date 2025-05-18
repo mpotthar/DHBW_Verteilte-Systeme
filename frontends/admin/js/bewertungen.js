@@ -1,5 +1,3 @@
-// js/bewertungen.js
-
 const REVIEWS_API_BASE_URL = 'http://localhost:3003/api';
 let reviewsData = [];
 
