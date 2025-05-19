@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,28 +13,33 @@
             background-color: #f8f9fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         .page-header {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/header_car.jpg') no-repeat center center;
             background-size: cover;
             color: white;
             padding: 60px 0;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
+
         .card {
             transition: transform 0.3s;
             margin-bottom: 20px;
             border: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
+
         .card-img-top {
             height: 200px;
             object-fit: cover;
         }
+
         .badge-price {
             position: absolute;
             top: 10px;
@@ -43,39 +49,55 @@
             color: white;
             font-weight: bold;
             border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
+
         .navbar-brand {
             font-weight: 700;
             color: #0d6efd !important;
         }
+
         .footer {
             background-color: #343a40;
             color: white;
             padding: 20px 0;
             margin-top: 40px;
         }
+
         .feature-icon {
             color: #0d6efd;
             margin-right: 5px;
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Mein Urlaub</a>
+            <a class="navbar-brand p-0 me-0" href="index.html">
+                <img src="img/logo.png" alt="Mein Urlaub Logo" height="72" class="d-block">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Start</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hotels.html">Hotels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="fluege.html">Flüge</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="mietwagen.html">Mietwagen</a></li>
-                    <li class="nav-item"><a class="nav-link" href="bewertungen.html">Bewertungen</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Start</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotels.html">Hotels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fluege.html">Flüge</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mietwagen.html">Mietwagen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bewertungen.html">Bewertungen</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -93,7 +115,8 @@
     <div class="container mb-4">
         <div class="row g-2">
             <div class="col-md-4 mb-2">
-                <input type="text" id="carFilter" class="form-control" placeholder="Suchen nach Typ, Hersteller, Modell...">
+                <input type="text" id="carFilter" class="form-control"
+                    placeholder="Suchen nach Typ, Hersteller, Modell...">
             </div>
             <div class="col-md-2 mb-2">
                 <select id="getriebeFilter" class="form-select">
@@ -161,4 +184,5 @@
     <!-- Mietwagen-spezifische Logik -->
     <script src="js/mietwagen.js"></script>
 </body>
+
 </html>
