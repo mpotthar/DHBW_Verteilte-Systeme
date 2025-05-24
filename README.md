@@ -4,8 +4,8 @@
 
 „Mein Urlaub“ ist ein verteiltes System, das aus mehreren unabhängigen Microservices besteht. Ziel ist es, Urlaubsangebote wie Hotels, Mietwagen, Flüge und Bewertungen modular, skalierbar und wartbar bereitzustellen. Zwei Webfrontends (Admin und User) ermöglichen die Verwaltung und Nutzung der Daten über APIs.
 
-**Hinweis:**  
-Weitere Details zu Architektur, Vorgehen, Benutzerführung und Hosting findest du in den jeweiligen [Dokumentationen](/docs/README.md) im Projekt.
+**Hinweis:**
+- Weitere Details zu Architektur, Vorgehen, Benutzerführung und Hosting findest du in den jeweiligen [Dokumentationen](/docs/README.md) im Projekt.
 ---
 
 ## Features
