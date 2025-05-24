@@ -1,6 +1,6 @@
 # Mein Urlaub – Verteiltes Microservices-System
 
-## Einleitung
+## Informationen zum Projekt
 
 „Mein Urlaub“ ist ein verteiltes System, das aus mehreren unabhängigen Microservices besteht. Ziel ist es, Urlaubsangebote wie Hotels, Mietwagen, Flüge und Bewertungen modular, skalierbar und wartbar bereitzustellen. Zwei Webfrontends (Admin und User) ermöglichen die Verwaltung und Nutzung der Daten über APIs.
 
@@ -60,5 +60,3 @@ docker compose down
 - **API:** REST (JSON)
 - **Reverse Proxy:** Nginx
 - **Containerisierung:** Docker, Docker Compose
-
----
