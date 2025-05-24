@@ -184,7 +184,7 @@ function getDemoDataForService(serviceName) {
                     ort: "Hamburg",
                     sterne: 4,
                     zimmerzahl: 120,
-                    preis: 99.00,
+                    preis: 99,
                     beschreibung: "Wunderschönes Hotel direkt an der Binnenalster mit Panoramablick.",
                     bilder: ["/img/demo/hotel_1.jpg"]
                 },
@@ -193,7 +193,7 @@ function getDemoDataForService(serviceName) {
                     ort: "Rügen",
                     sterne: 5,
                     zimmerzahl: 150,
-                    preis: 220.00,
+                    preis: 220,
                     beschreibung: "Luxuriöses Wellnesshotel in Binz auf Rügen in direkter Strandnähe mit Blick auf die Ostsee.",
                     bilder: ["/img/demo/hotel_2.jpg"]
                 },
@@ -202,7 +202,7 @@ function getDemoDataForService(serviceName) {
                     ort: "München",
                     sterne: 3,
                     zimmerzahl: 65,
-                    preis: 95.00,
+                    preis: 95,
                     beschreibung: "Zentral gelegenes Hotel in der Nähe aller wichtigen Sehenswürdigkeiten.",
                     bilder: ["/img/demo/hotel_3.jpg"]
                 }
@@ -219,7 +219,7 @@ function getDemoDataForService(serviceName) {
                     datum: new Date().toISOString()
                 },
                 {
-                    nameRezensent: "Maria Schmidt",
+                    nameRezensent: "Mehmet Can",
                     titel: "Guter Flug, pünktliche Landung",
                     beschreibung: "Der Flug war angenehm, das Personal freundlich und wir sind pünktlich gelandet.",
                     sterne: 4,
@@ -227,7 +227,7 @@ function getDemoDataForService(serviceName) {
                     datum: new Date().toISOString()
                 },
                 {
-                    nameRezensent: "Thomas Müller",
+                    nameRezensent: "Sabine Meyer",
                     titel: "Zuverlässiger Mietwagen",
                     beschreibung: "Die Abholung und Abgabe des Mietwagens verlief problemlos. Das Auto war in einem TOP Zustand.",
                     sterne: 5,
@@ -241,8 +241,8 @@ function getDemoDataForService(serviceName) {
                 {
                     start: "Berlin",
                     ziel: "München",
-                    abflug: new Date(2025, 5, 20, 8, 30).toISOString(),
-                    ankunft: new Date(2025, 5, 20, 9, 45).toISOString(),
+                    abflug: new Date(2025, 6, 20, 8, 30).toISOString(),
+                    ankunft: new Date(2025, 6, 20, 9, 45).toISOString(),
                     fluggesellschaft: "Lufthansa",
                     flugnummer: "LH2035",
                     preis: 129.99
@@ -250,8 +250,8 @@ function getDemoDataForService(serviceName) {
                 {
                     start: "Frankfurt",
                     ziel: "Barcelona",
-                    abflug: new Date(2025, 5, 21, 10, 15).toISOString(),
-                    ankunft: new Date(2025, 5, 21, 12, 30).toISOString(),
+                    abflug: new Date(2025, 6, 21, 10, 15).toISOString(),
+                    ankunft: new Date(2025, 6, 21, 12, 30).toISOString(),
                     fluggesellschaft: "Eurowings",
                     flugnummer: "EW1234",
                     preis: 89.99
@@ -259,8 +259,8 @@ function getDemoDataForService(serviceName) {
                 {
                     start: "Hamburg",
                     ziel: "London",
-                    abflug: new Date(2025, 5, 22, 14, 0).toISOString(),
-                    ankunft: new Date(2025, 5, 22, 15, 20).toISOString(),
+                    abflug: new Date(2025, 6, 22, 14, 0).toISOString(),
+                    ankunft: new Date(2025, 6, 22, 15, 20).toISOString(),
                     fluggesellschaft: "British Airways",
                     flugnummer: "BA2478",
                     preis: 159.99
@@ -276,7 +276,7 @@ function getDemoDataForService(serviceName) {
                     sitzplaetze: 5,
                     getriebe: "Automatik",
                     versicherung: "Vollkasko ohne Selbstbeteiligung",
-                    mietpreis_pro_24h: 59.99,
+                    mietpreis_pro_24h: 59,
                     bild_url: "/img/demo/auto_1.jpg"
                 },
                 {
@@ -286,7 +286,7 @@ function getDemoDataForService(serviceName) {
                     sitzplaetze: 3,
                     getriebe: "Manuell",
                     versicherung: "Vollkasko mit 1000 Selbstbeteiligung",
-                    mietpreis_pro_24h: 89.99,
+                    mietpreis_pro_24h: 89,
                     bild_url: "/img/demo/auto_2.jpg"
                 },
                 {
@@ -296,7 +296,7 @@ function getDemoDataForService(serviceName) {
                     sitzplaetze: 5,
                     getriebe: "Automatik",
                     versicherung: "Vollkasko ohne Selbstbeteiligung",
-                    mietpreis_pro_24h: 119.99,
+                    mietpreis_pro_24h: 119,
                     bild_url: "/img/demo/auto_3.jpg"
                 }
             ];

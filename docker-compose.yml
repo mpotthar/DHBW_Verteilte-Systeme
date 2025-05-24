@@ -20,6 +20,7 @@ services:
   mongo-hotel:
     image: mongo
     container_name: mein-urlaub-mongo-hotel
+    command: mongod --quiet --logpath /dev/null  # Log-Ausgabe komplett unterdrücken
     volumes:
       - mongo-hotel-data:/data/db
     networks:
@@ -28,6 +29,7 @@ services:
   mongo-bewertungen:
     image: mongo
     container_name: mein-urlaub-mongo-bewertungen
+    command: mongod --quiet --logpath /dev/null  # Log-Ausgabe komplett unterdrücken
     volumes:
       - mongo-bewertungen-data:/data/db
     networks:
@@ -36,6 +38,7 @@ services:
   mongo-flug:
     image: mongo
     container_name: mein-urlaub-mongo-flug
+    command: mongod --quiet --logpath /dev/null  # Log-Ausgabe komplett unterdrücken
     volumes:
       - mongo-flug-data:/data/db
     networks:
@@ -44,6 +47,7 @@ services:
   mongo-mietwagen:
     image: mongo
     container_name: mein-urlaub-mongo-mietwagen
+    command: mongod --quiet --logpath /dev/null  # Log-Ausgabe komplett unterdrücken
     volumes:
       - mongo-mietwagen-data:/data/db
     networks:
