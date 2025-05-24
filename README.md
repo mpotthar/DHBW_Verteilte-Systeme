@@ -54,8 +54,8 @@ docker compose down
 
 ## Technologie-Stack
 
-- **Backend:** Node.js (ExpressJS)
-- **Frontend:** Bootstrap, JavaScript
+- **Backend:** Express.JS, Node.JS
+- **Frontend:** HTML, CSS, JavaScript, Bootstrap
 - **Datenbanken:** MongoDB (je Microservice eine eigene Instanz)
 - **API:** REST (JSON)
 - **Reverse Proxy:** Nginx
