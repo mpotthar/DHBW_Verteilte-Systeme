@@ -42,6 +42,38 @@ function loadDemoData() {
     `;
 }
 
+async function clearAllDataForService(serviceName) {
+    const response = await fetch(`/api/${getEndpointForService(serviceName)}`);
+    if (!response.ok) {
+        throw new Error(`Fehler beim Abrufen der Daten für ${serviceName}`);
+    }
+    const items = await response.json();
+
+    let deleteSuccess = 0;
+    let deleteErrors = [];
+    for (const item of items) {
+        try {
+            const delResp = await fetch(
+                `/api/${getEndpointForService(serviceName)}/${item._id}`,
+                { method: "DELETE" }
+            );
+            if (!delResp.ok) {
+                throw new Error(`Fehler beim Löschen von ${item._id}`);
+            }
+            deleteSuccess++;
+        } catch (err) {
+            deleteErrors.push(err.message);
+        }
+    }
+    return {
+        success: deleteErrors.length === 0,
+        count: deleteSuccess,
+        message: deleteErrors.length === 0
+            ? "Alle Daten erfolgreich gelöscht."
+            : `Fehler beim Löschen: ${deleteErrors.join(", ")}`
+    };
+}
+
 async function createAllDemoData() {
     showStatus("Erstelle Demo-Daten für alle Services...", "info");
     
@@ -80,9 +112,7 @@ async function createDemoDataForService(serviceName, shouldClear = null, showRes
         
         // Lösche ggf. bestehende Daten
         if (shouldClear) {
-            await fetch(`/api/${getEndpointForService(serviceName)}`, {
-                method: 'DELETE'
-            });
+            await clearAllDataForService(serviceName);
         }
         
         // Füge Demo-Daten EINZELN hinzu (statt als Array)
