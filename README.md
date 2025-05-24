@@ -17,7 +17,7 @@
 - **Demo-Daten:** Automatisches Befüllen aller Datenbanken über das Admin-Frontend
 - **Docker Compose:** Einfaches Starten aller Komponenten mit einem Befehl, blitzschnelles Rollout
 - **Responsive UI:** Bootstrap-basiertes, modernes Design
-- **Keine Authentifizierung:** (optional nachrüstbar)
+- **Keine Authentifizierung:** optional nachrüstbar
 ---
 
 ## Installation
