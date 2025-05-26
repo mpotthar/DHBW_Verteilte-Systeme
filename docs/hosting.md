@@ -18,12 +18,11 @@
 
 ## Cloud/PaaS-Vorschlag
 
-| Anbieter    | Service-Typ    | Preis (ca.)    | Hinweise                        |
-|-------------|----------------|----------------|---------------------------------|
-| Heroku      | Container      | ab 5€/Monat    | Einfaches Deployment, Free Tier |
-| Render      | Web Service    | ab 7€/Monat    | Docker-Support                  |
-| DigitalOcean| Droplet        | ab 5€/Monat    | Volle Kontrolle                 |
-| MongoDB Atlas | DB as a Service | Free/ab 9€ | Externe Datenbank möglich       |
+| Anbieter      | Service-Typ     | Preis (ca.)                      | Hinweise                        |
+|---------------|-----------------|----------------------------------|---------------------------------|
+| Heroku        | Container       | ab 5 US$/Monat                   | Einfaches Deployment, Free Tier |
+| Render        | Web Service     | ab 0 US$/Monat + Compute Kosten  | Docker-Support                  |
+| MongoDB Atlas | DB as a Service | ab 0 US$/Monat                   | Externe Datenbank möglich       |
 
 - Alle Microservices können als einzelne Container/Apps deployed werden.
 - MongoDB kann als Managed Service (z.B. Atlas) genutzt werden.
