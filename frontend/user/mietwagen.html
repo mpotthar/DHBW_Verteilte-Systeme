@@ -11,7 +11,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <!-- Custom CSS -->
     <style>
+        html,
         body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             background-color: #f8f9fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -105,74 +113,76 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <div class="page-header text-center">
+    <main class="flex-grow-1">
+        <!-- Page Header -->
+        <div class="page-header text-center">
+            <div class="container">
+                <h1 class="display-4">Mietwagen</h1>
+                <p class="lead">Finden Sie den passenden Mietwagen für Ihre Reise</p>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="container mb-4">
+            <div class="row g-2">
+                <div class="col-md-4 mb-2">
+                    <input type="text" id="carFilter" class="form-control"
+                        placeholder="Suchen nach Typ, Hersteller, Modell...">
+                </div>
+                <div class="col-md-2 mb-2">
+                    <select id="getriebeFilter" class="form-select">
+                        <option value="">Alle Getriebe</option>
+                        <option value="Automatik">Automatik</option>
+                        <option value="Manuell">Manuell</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <select id="versicherungFilter" class="form-select">
+                        <option value="">Alle Versicherungen</option>
+                        <option value="Vollkasko ohne Selbstbeteiligung">Ohne Selbstbeteiligung</option>
+                        <option value="Vollkasko mit 1000 Selbstbeteiligung">Mit Selbstbeteiligung</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <select id="sortOrderCars" class="form-select">
+                        <option value="preisAsc">Preis: Aufsteigend</option>
+                        <option value="preisDesc">Preis: Absteigend</option>
+                        <option value="sitzplaetzeDesc">Sitzplätze: Absteigend</option>
+                        <option value="herstellerAsc">Hersteller: A-Z</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cars Cards -->
         <div class="container">
-            <h1 class="display-4">Mietwagen</h1>
-            <p class="lead">Finden Sie den passenden Mietwagen für Ihre Reise</p>
+            <div class="row" id="carCards">
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Lade...</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Filter Section -->
-    <div class="container mb-4">
-        <div class="row g-2">
-            <div class="col-md-4 mb-2">
-                <input type="text" id="carFilter" class="form-control"
-                    placeholder="Suchen nach Typ, Hersteller, Modell...">
-            </div>
-            <div class="col-md-2 mb-2">
-                <select id="getriebeFilter" class="form-select">
-                    <option value="">Alle Getriebe</option>
-                    <option value="Automatik">Automatik</option>
-                    <option value="Manuell">Manuell</option>
-                </select>
-            </div>
-            <div class="col-md-3 mb-2">
-                <select id="versicherungFilter" class="form-select">
-                    <option value="">Alle Versicherungen</option>
-                    <option value="Vollkasko ohne Selbstbeteiligung">Ohne Selbstbeteiligung</option>
-                    <option value="Vollkasko mit 1000 Selbstbeteiligung">Mit Selbstbeteiligung</option>
-                </select>
-            </div>
-            <div class="col-md-3 mb-2">
-                <select id="sortOrderCars" class="form-select">
-                    <option value="preisAsc">Preis: Aufsteigend</option>
-                    <option value="preisDesc">Preis: Absteigend</option>
-                    <option value="sitzplaetzeDesc">Sitzplätze: Absteigend</option>
-                    <option value="herstellerAsc">Hersteller: A-Z</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <!-- Cars Cards -->
-    <div class="container">
-        <div class="row" id="carCards">
-            <div class="col-12 text-center">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Lade...</span>
+        <!-- Car Details Modal -->
+        <div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="carModalLabel">Fahrzeugdetails</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+                    </div>
+                    <div class="modal-body" id="carModalBody">
+                        <!-- Details werden dynamisch geladen -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Car Details Modal -->
-    <div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="carModalLabel">Fahrzeugdetails</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
-                </div>
-                <div class="modal-body" id="carModalBody">
-                    <!-- Details werden dynamisch geladen -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="footer text-center">

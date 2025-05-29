@@ -11,7 +11,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <!-- Custom CSS -->
     <style>
+        html,
         body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             background-color: #f8f9fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -104,71 +112,73 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <div class="page-header text-center">
+    <main class="flex-grow-1">
+        <!-- Page Header -->
+        <div class="page-header text-center">
+            <div class="container">
+                <h1 class="display-4">Hotels</h1>
+                <p class="lead">Finden Sie die perfekte Unterkunft für Ihren Aufenthalt</p>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <input type="text" id="hotelFilter" class="form-control"
+                        placeholder="Suchen Sie nach Hotels oder Orten...">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <select id="starFilter" class="form-select">
+                        <option value="0">Alle Sterne</option>
+                        <option value="5">5 Sterne</option>
+                        <option value="4">4 Sterne</option>
+                        <option value="3">3 Sterne</option>
+                        <option value="2">2 Sterne</option>
+                        <option value="1">1 Stern</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <select id="sortOrder" class="form-select">
+                        <option value="priceAsc">Preis: Aufsteigend</option>
+                        <option value="priceDesc">Preis: Absteigend</option>
+                        <option value="starsDesc">Sterne: Absteigend</option>
+                        <option value="nameAsc">Name: A-Z</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hotels Cards -->
         <div class="container">
-            <h1 class="display-4">Hotels</h1>
-            <p class="lead">Finden Sie die perfekte Unterkunft für Ihren Aufenthalt</p>
+            <div class="row" id="hotelCards">
+                <!-- Cards werden dynamisch geladen -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Lade...</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Filter Section -->
-    <div class="container mb-4">
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <input type="text" id="hotelFilter" class="form-control"
-                    placeholder="Suchen Sie nach Hotels oder Orten...">
-            </div>
-            <div class="col-md-3 mb-3">
-                <select id="starFilter" class="form-select">
-                    <option value="0">Alle Sterne</option>
-                    <option value="5">5 Sterne</option>
-                    <option value="4">4 Sterne</option>
-                    <option value="3">3 Sterne</option>
-                    <option value="2">2 Sterne</option>
-                    <option value="1">1 Stern</option>
-                </select>
-            </div>
-            <div class="col-md-3 mb-3">
-                <select id="sortOrder" class="form-select">
-                    <option value="priceAsc">Preis: Aufsteigend</option>
-                    <option value="priceDesc">Preis: Absteigend</option>
-                    <option value="starsDesc">Sterne: Absteigend</option>
-                    <option value="nameAsc">Name: A-Z</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hotels Cards -->
-    <div class="container">
-        <div class="row" id="hotelCards">
-            <!-- Cards werden dynamisch geladen -->
-            <div class="col-12 text-center">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Lade...</span>
+        <!-- Hotel Details Modal -->
+        <div class="modal fade" id="hotelModal" tabindex="-1" aria-labelledby="hotelModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="hotelModalLabel">Hotel Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+                    </div>
+                    <div class="modal-body" id="hotelModalBody">
+                        <!-- Details werden dynamisch geladen -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Hotel Details Modal -->
-    <div class="modal fade" id="hotelModal" tabindex="-1" aria-labelledby="hotelModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="hotelModalLabel">Hotel Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
-                </div>
-                <div class="modal-body" id="hotelModalBody">
-                    <!-- Details werden dynamisch geladen -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="footer text-center">
