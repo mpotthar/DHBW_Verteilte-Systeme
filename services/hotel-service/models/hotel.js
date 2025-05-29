@@ -8,23 +8,23 @@ const hotelSchema = new mongoose.Schema({
   },
   ort: {
     type: String,
-    required: [true, 'Ort ist erforderlich'],
+    required: true,
     trim: true
   },
   sterne: {
     type: Number,
-    required: [true, 'Sterne-Bewertung ist erforderlich'],
+    required: true,
     min: 1,
     max: 5
   },
   zimmerzahl: {
     type: Number,
-    required: [true, 'Zimmerzahl ist erforderlich'],
+    required: true,
     min: 1
   },
   preis: {
     type: Number,
-    required: [true, 'Preis pro Nacht ist erforderlich'],
+    required: true,
     min: 0
   },
   beschreibung: {
