@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-// MongoDB-Verbindung (lokal oder über MongoDB Atlas)
 const dbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/hotel-service';
 
 const connect = async () => {
