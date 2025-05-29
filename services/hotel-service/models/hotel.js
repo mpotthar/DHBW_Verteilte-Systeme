@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const hotelSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Name ist erforderlich'],
+    required: true,
     trim: true
   },
   ort: {
@@ -40,9 +40,8 @@ const hotelSchema = new mongoose.Schema({
     default: true
   }
 }, {
-  timestamps: true // createdAt, updatedAt automatisch hinzufügen
+  timestamps: true 
 });
 
 const Hotel = mongoose.model('Hotel', hotelSchema);
-
 module.exports = Hotel;
