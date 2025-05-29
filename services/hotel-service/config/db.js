@@ -1,6 +1,6 @@
 // Datenbankkonnektor MongoDB - Hotel-Service
 const mongoose = require('mongoose');
-const dbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/hotel-service';
+const dbURI = process.env.MONGODB_URI || 'mongodb://mongodb:27017/hotel-service';
 
 const connect = async () => {
   try {

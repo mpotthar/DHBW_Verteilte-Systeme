@@ -6,6 +6,7 @@ services:
     command: mongod --quiet --logpath /dev/null
     volumes:
       - mongodb-data:/data/db
+      - mongodb-config:/data/configdb
     networks:
       - backend-network
 
@@ -77,3 +78,4 @@ networks:
 
 volumes:
   mongodb-data:
+  mongodb-config:
