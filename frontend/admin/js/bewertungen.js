@@ -75,7 +75,7 @@ function displayReviews(reviews) {
         <tr>
             <td>${review.nameRezensent}</td>
             <td>${review.titel}</td>
-            <td>${truncateText(review.beschreibung, 50)}</td>
+            <td>${truncateText(review.beschreibung, 25)}</td>
             <td>${getStars(review.sterne)}</td>
             <td>${getServiceTypeLabel(review.dienstleistungsTyp)}</td>
             <td>${formatDate(review.datum)}</td>

@@ -10,6 +10,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <!-- Custom CSS -->
     <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         .footer {
             background-color: #343a40;
             color: white;
@@ -58,9 +71,9 @@
 
 
     <!-- Hauptinhalt des Admininterfaces -->
-    <main class="container-fluid px-0">
+    <main class="flex-grow-1 container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-9 col-xl-8 px-3 py-4" id="mainContent">
+            <div class="col-12 col-lg-11 px-1 py-4" id="mainContent"></div>
                 <!-- Dynamischer Content wird hier durch JS nachgeladen -->
             </div>
         </div>
@@ -70,11 +83,11 @@
     <footer class="footer text-center">
         <div class="container">
             <div class="row d-flex align-items-center">
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-9 pt-1">
                     <a>&copy; 2025 Mein Urlaub - Ein Projekt im Rahmen der Vorlesung Verteilte Systeme an der DHBW
                         Heilbronn</a>
                 </div>
-                <div class="col-12 col-md-3 d-flex justify-content-md-end">
+                <div class="col-12 col-md-3 pt-1 d-flex justify-content-md-end">
                     <a class="text-decoration-none link-light" href="/">
                         <i class="bi bi-door-open"></i> Admin UI verlassen
                     </a>
