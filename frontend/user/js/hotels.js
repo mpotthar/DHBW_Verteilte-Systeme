@@ -1,6 +1,7 @@
 const API_BASE_URL = '/api';
 let hotelsData = [];
 
+// Event-Listener für DOMContentLoaded, um die Hotels zu laden und Filter zu initialisieren
 document.addEventListener('DOMContentLoaded', () => {
     loadHotels();
     document.getElementById('hotelFilter').addEventListener('keyup', filterHotels);
@@ -8,13 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('sortOrder').addEventListener('change', filterHotels);
 });
 
+// Funktion zum Laden der Hotels von der API
 async function loadHotels() {
     try {
         const response = await fetch(`${API_BASE_URL}/hotels`);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         hotelsData = await response.json();
+        // displayHotels(hotelsData); <- ersetzt durch filterHotels(), um die initiale Anzeige zu filtern
         filterHotels();
-        // displayHotels(hotelsData);
     } catch (error) {
         document.getElementById('hotelCards').innerHTML =
             `<div class="col-12 text-center">
@@ -25,6 +27,8 @@ async function loadHotels() {
     }
 }
 
+// Funktion zum Anzeigen der Hotels in Bootstrap-Cards
+// Input: hotels (Array von Hotel-Objekten)
 function displayHotels(hotels) {
     const container = document.getElementById('hotelCards');
     if (!hotels || hotels.length === 0) {
@@ -54,6 +58,8 @@ function displayHotels(hotels) {
     `).join('');
 }
 
+// Hilfsfunktion zum iterieren und Erstellen der Sterne-Bewertung
+// Input: count (Anzahl der Sterne)
 function getStars(count) {
     let stars = '';
     for (let i = 0; i < count; i++) {
@@ -62,6 +68,8 @@ function getStars(count) {
     return stars;
 }
 
+// Funktion zum Anzeigen der Hotel-Details in einem Bootstrap Modal
+// Input: hotel (Objekt mit Hotel-Daten)
 function showHotelDetails(hotel) {
     const modalBody = document.getElementById('hotelModalBody');
     const modalTitle = document.getElementById('hotelModalLabel');
@@ -91,6 +99,9 @@ function showHotelDetails(hotel) {
     hotelModal.show();
 }
 
+// Funktion zum Filtern und Sortieren der Hotels basierend auf Benutzereingaben
+// Aufgerufen bei Eingabe in das Filterfeld, Änderung der Sterne-Auswahl oder Sortierung, 
+// sowie initial loadHotels
 function filterHotels() {
     const filterText = document.getElementById('hotelFilter').value.toUpperCase();
     const starFilter = parseInt(document.getElementById('starFilter').value);
@@ -101,7 +112,7 @@ function filterHotels() {
         const starMatch = starFilter === 0 || hotel.sterne === starFilter;
         return (nameMatch || ortMatch) && starMatch;
     });
-    switch(sortOrder) {
+    switch (sortOrder) {
         case 'priceAsc':
             filtered.sort((a, b) => a.preis - b.preis); break;
         case 'priceDesc':

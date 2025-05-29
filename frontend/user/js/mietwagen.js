@@ -1,6 +1,7 @@
 const CARS_API_BASE_URL = '/api';
 let carsData = [];
 
+// Event-Listener für DOMContentLoaded, um die Mietwagen zu laden und Filter zu initialisieren
 document.addEventListener('DOMContentLoaded', () => {
     loadCars();
     document.getElementById('carFilter').addEventListener('keyup', filterCars);
@@ -9,12 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('sortOrderCars').addEventListener('change', filterCars);
 });
 
+// Funktion zum Laden der Mietwagen von der API
 async function loadCars() {
     try {
         const response = await fetch(`${CARS_API_BASE_URL}/cars`);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         carsData = await response.json();
-        filterCars(); 
+        filterCars();
+        // displayCars(carsData); // <- ersetzt durch filterCars(), um die initiale Anzeige zu filtern
     } catch (error) {
         document.getElementById('carCards').innerHTML =
             `<div class="col-12 text-center">
@@ -25,7 +28,7 @@ async function loadCars() {
     }
 }
 
-
+// Funktion zum Anzeigen der Mietwagen in Bootstrap-Cards
 function displayCars(cars) {
     const container = document.getElementById('carCards');
     if (!cars || cars.length === 0) {
@@ -56,6 +59,8 @@ function displayCars(cars) {
     `).join('');
 }
 
+// Hilfsfunktion zum Formatieren der Versicherungsangaben
+// Vermeidung der Speicherung von €-Symbolen in der Datenbank
 function formatVersicherung(versicherung) {
     if (versicherung === 'Vollkasko ohne Selbstbeteiligung') {
         return 'Vollkasko ohne Selbstbeteiligung';
@@ -65,12 +70,14 @@ function formatVersicherung(versicherung) {
     return versicherung;
 }
 
+// Funktion zum Anzeigen der Details eines Mietwagens in einem Bootstrap Modal
+// Input: car (Objekt mit Mietwagen-Daten)
 function showCarDetails(car) {
     const modalBody = document.getElementById('carModalBody');
     const modalTitle = document.getElementById('carModalLabel');
-    
+
     modalTitle.textContent = `${car.hersteller} ${car.modell}`;
-    
+
     modalBody.innerHTML = `
         <div class="row">
             <div class="col-md-6">
@@ -94,11 +101,12 @@ function showCarDetails(car) {
             </div>
         </div>
     `;
-    
+
     const carModal = new bootstrap.Modal(document.getElementById('carModal'));
     carModal.show();
 }
 
+// Funktion zum Filtern und Sortieren der Mietwagen
 function filterCars() {
     const text = document.getElementById('carFilter').value.toUpperCase();
     const getriebe = document.getElementById('getriebeFilter').value;
@@ -106,33 +114,33 @@ function filterCars() {
     const sortOrder = document.getElementById('sortOrderCars').value;
 
     let filtered = carsData.filter(car => {
-        const matchesText = 
-            (!text || 
-             (car.typ && car.typ.toUpperCase().includes(text)) || 
-             (car.hersteller && car.hersteller.toUpperCase().includes(text)) || 
-             (car.modell && car.modell.toUpperCase().includes(text))
+        const matchesText =
+            (!text ||
+                (car.typ && car.typ.toUpperCase().includes(text)) ||
+                (car.hersteller && car.hersteller.toUpperCase().includes(text)) ||
+                (car.modell && car.modell.toUpperCase().includes(text))
             );
-        
+
         const matchesGetriebe = !getriebe || car.getriebe === getriebe;
         const matchesVersicherung = !versicherung || car.versicherung === versicherung;
-        
+
         return matchesText && matchesGetriebe && matchesVersicherung;
     });
 
     switch (sortOrder) {
         case 'preisAsc':
-            filtered.sort((a, b) => a.mietpreis_pro_24h - b.mietpreis_pro_24h); 
+            filtered.sort((a, b) => a.mietpreis_pro_24h - b.mietpreis_pro_24h);
             break;
         case 'preisDesc':
-            filtered.sort((a, b) => b.mietpreis_pro_24h - a.mietpreis_pro_24h); 
+            filtered.sort((a, b) => b.mietpreis_pro_24h - a.mietpreis_pro_24h);
             break;
         case 'sitzplaetzeDesc':
-            filtered.sort((a, b) => b.sitzplaetze - a.sitzplaetze); 
+            filtered.sort((a, b) => b.sitzplaetze - a.sitzplaetze);
             break;
         case 'herstellerAsc':
-            filtered.sort((a, b) => a.hersteller.localeCompare(b.hersteller)); 
+            filtered.sort((a, b) => a.hersteller.localeCompare(b.hersteller));
             break;
     }
-    
+
     displayCars(filtered);
 }

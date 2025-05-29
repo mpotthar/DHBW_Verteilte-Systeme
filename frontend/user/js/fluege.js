@@ -1,19 +1,21 @@
 const FLIGHTS_API_BASE_URL = '/api';
 let flightsData = [];
 
+// Event-Listener für DOMContentLoaded, um die Flüge zu laden und Filter zu initialisieren
 document.addEventListener('DOMContentLoaded', () => {
     loadFlights();
     document.getElementById('flightFilter').addEventListener('keyup', filterFlights);
     document.getElementById('sortOrderFlights').addEventListener('change', filterFlights);
 });
 
+// Funktion zum Laden der Flüge von der API
 async function loadFlights() {
     try {
         const response = await fetch(`${FLIGHTS_API_BASE_URL}/flights`);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         flightsData = await response.json();
         filterFlights();
-        // displayFlights(flightsData);
+        // displayFlights(flightsData); <- ersetzt durch filterFlights(), um die initiale Anzeige zu filtern
     } catch (error) {
         document.getElementById('flightCards').innerHTML =
             `<div class="col-12 text-center">
@@ -24,6 +26,8 @@ async function loadFlights() {
     }
 }
 
+// Funktion zum Anzeigen der Flüge in Bootstrap-Cards
+// Input: flights (Array von Flug-Objekten)
 function displayFlights(flights) {
     const container = document.getElementById('flightCards');
     if (!flights || flights.length === 0) {
@@ -53,15 +57,22 @@ function displayFlights(flights) {
     `).join('');
 }
 
+// Hilfsfunktion zum Truncieren von Text
+// Formatierung von Datum und Uhrzeit in deutschem Format
 function formatDateTime(dateString) {
     if (!dateString) return '';
     const date = new Date(dateString);
     return date.toLocaleString('de-DE', {
-        day: '2-digit', month: '2-digit', year: 'numeric',
-        hour: '2-digit', minute: '2-digit'
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
     });
 }
 
+// Funktion zum Anzeigen der Flugdaten in einem Bootstrap Modal
+// Input: flight (Flug-Objekt)
 function showFlightDetails(flight) {
     const modalBody = document.getElementById('flightModalBody');
     const modalTitle = document.getElementById('flightModalLabel');
@@ -86,6 +97,7 @@ function showFlightDetails(flight) {
     flightModal.show();
 }
 
+// Funktion zum Filtern und Sortieren der Flüge
 function filterFlights() {
     const filter = document.getElementById('flightFilter').value.toUpperCase();
     const sortOrder = document.getElementById('sortOrderFlights').value;
@@ -95,7 +107,7 @@ function filterFlights() {
         flight.fluggesellschaft.toUpperCase().includes(filter) ||
         flight.flugnummer.toUpperCase().includes(filter)
     );
-    switch(sortOrder) {
+    switch (sortOrder) {
         case 'dateAsc':
             filtered.sort((a, b) => new Date(a.abflug) - new Date(b.abflug)); break;
         case 'dateDesc':
