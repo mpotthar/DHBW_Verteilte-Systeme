@@ -93,12 +93,10 @@ function showCarDetails(car) {
                     <p><i class="bi bi-shield-fill-check feature-icon"></i> <strong>Versicherung:</strong> ${formatVersicherung(car.versicherung)}</p>
                     <p><i class="bi bi-currency-euro feature-icon"></i> <strong>Mietpreis pro Tag:</strong> ${car.mietpreis_pro_24h} €</p>
                 </div>
-                <div class="mt-4">
-                    <div class="alert alert-info">
-                        <i class="bi bi-info-circle"></i> Für Buchungen oder weitere Informationen kontaktieren Sie bitte direkt unser Serviceteam.
-                    </div>
-                </div>
             </div>
+        </div>
+        <div class="alert alert-info mt-3">
+            <i class="bi bi-info-circle"></i> Für Buchungen oder weitere Informationen kontaktieren Sie bitte direkt unser Serviceteam.
         </div>
     `;
 
