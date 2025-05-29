@@ -4,12 +4,15 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const db = require('./config/db');
 
-// Express App initialisieren
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost', 'http://127.0.0.1', "http://mein-urlaub-nginx"],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev')); // Logging
@@ -30,10 +33,3 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Hotel-Service läuft auf Port ${PORT}`);
 });
-
-// Frontend Kommunikation
-app.use(cors({
-    origin: ['*'], // URLs des Admin-Frontends
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type']
-}));
