@@ -18,7 +18,7 @@ Foto von [Chris Osmond](https://unsplash.com/de/@chrisosmond?utm_content=creditC
 
 ## KI-generierte Medien
 **Logo:**
-Das Logo der Anwendung wurde mithilfe von OpenAI generiert.
+Das Logo und Favicon der Anwendung wurde mithilfe von OpenAI generiert.
 
 **Video auf der Startseite:**
 Das Begrüßungsvideo auf der Startseite wurde mit Gemini Veo (Google) KI-gestützt erstellt.
