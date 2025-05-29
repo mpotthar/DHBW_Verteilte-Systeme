@@ -114,13 +114,17 @@ function filterHotels() {
     });
     switch (sortOrder) {
         case 'priceAsc':
-            filtered.sort((a, b) => a.preis - b.preis); break;
+            filtered.sort((a, b) => a.preis - b.preis); 
+            break;
         case 'priceDesc':
-            filtered.sort((a, b) => b.preis - a.preis); break;
+            filtered.sort((a, b) => b.preis - a.preis); 
+            break;
         case 'starsDesc':
-            filtered.sort((a, b) => b.sterne - a.sterne); break;
+            filtered.sort((a, b) => b.sterne - a.sterne); 
+            break;
         case 'nameAsc':
-            filtered.sort((a, b) => a.name.localeCompare(b.name)); break;
+            filtered.sort((a, b) => a.name.localeCompare(b.name)); 
+            break;
     }
     displayHotels(filtered);
 }

@@ -109,13 +109,17 @@ function filterFlights() {
     );
     switch (sortOrder) {
         case 'dateAsc':
-            filtered.sort((a, b) => new Date(a.abflug) - new Date(b.abflug)); break;
+            filtered.sort((a, b) => new Date(a.abflug) - new Date(b.abflug)); 
+            break;
         case 'dateDesc':
-            filtered.sort((a, b) => new Date(b.abflug) - new Date(a.abflug)); break;
+            filtered.sort((a, b) => new Date(b.abflug) - new Date(a.abflug)); 
+            break;
         case 'priceAsc':
-            filtered.sort((a, b) => a.preis - b.preis); break;
+            filtered.sort((a, b) => a.preis - b.preis); 
+            break;
         case 'priceDesc':
-            filtered.sort((a, b) => b.preis - a.preis); break;
+            filtered.sort((a, b) => b.preis - a.preis); 
+            break;
     }
     displayFlights(filtered);
 }
