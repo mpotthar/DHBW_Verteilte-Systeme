@@ -1,3 +1,4 @@
+// Datenbankkonnektor MongoDB - Flug-Service
 const mongoose = require('mongoose');
 const dbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mietwagen-service';
 
