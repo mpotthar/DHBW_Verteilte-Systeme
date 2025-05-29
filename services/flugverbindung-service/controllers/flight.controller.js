@@ -10,11 +10,13 @@ exports.getAllFlights = async (req, res) => {
   }
 };
 
-// Einzelnen Flug abrufen
+// Einen einzelnen Flug abrufen
 exports.getFlightById = async (req, res) => {
   try {
     const flight = await Flight.findById(req.params.id);
-    if (!flight) return res.status(404).json({ message: 'Flug nicht gefunden' });
+    if (!flight) {
+      return res.status(404).json({ message: 'Flug nicht gefunden' });
+    }
     res.status(200).json(flight);
   } catch (error) {
     res.status(500).json({ message: 'Fehler beim Abrufen des Flugs', error: error.message });
@@ -40,7 +42,9 @@ exports.updateFlight = async (req, res) => {
       req.body,
       { new: true, runValidators: true }
     );
-    if (!updatedFlight) return res.status(404).json({ message: 'Flug nicht gefunden' });
+    if (!updatedFlight) {
+      return res.status(404).json({ message: 'Flug nicht gefunden' });
+    }
     res.status(200).json(updatedFlight);
   } catch (error) {
     res.status(400).json({ message: 'Fehler beim Aktualisieren des Flugs', error: error.message });
@@ -51,7 +55,9 @@ exports.updateFlight = async (req, res) => {
 exports.deleteFlight = async (req, res) => {
   try {
     const deletedFlight = await Flight.findByIdAndDelete(req.params.id);
-    if (!deletedFlight) return res.status(404).json({ message: 'Flug nicht gefunden' });
+    if (!deletedFlight) {
+      return res.status(404).json({ message: 'Flug nicht gefunden' });
+    }
     res.status(200).json({ message: 'Flug erfolgreich gelöscht' });
   } catch (error) {
     res.status(500).json({ message: 'Fehler beim Löschen des Flugs', error: error.message });

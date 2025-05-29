@@ -2,12 +2,8 @@ const Review = require('../models/review');
 
 // Alle Bewertungen abrufen
 exports.getAllReviews = async (req, res) => {
-  try {
-    let query = {};
-    if (req.query.typ) {
-      query.dienstleistungsTyp = req.query.typ;
-    }
-    const reviews = await Review.find(query).sort({ datum: -1 });
+    try {
+    const reviews = await Review.find();
     res.status(200).json(reviews);
   } catch (error) {
     res.status(500).json({ message: 'Fehler beim Abrufen der Bewertungen', error: error.message });
