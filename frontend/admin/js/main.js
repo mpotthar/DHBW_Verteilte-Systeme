@@ -2,18 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Default: Hotels laden
     loadModule("hotels");
 
-    // Sidebar-Links (Desktop)
-    document.querySelectorAll("#sidebarMenu a").forEach(link => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            document.querySelectorAll("#sidebarMenu a").forEach(l => l.classList.remove("active"));
-            link.classList.add("active");
-            loadModule(link.dataset.module);
-        });
-    });
-
-    // Navbar-Links (Mobile)
-    document.querySelectorAll(".navbar-nav.d-lg-none a").forEach(link => {
+    // Navbar-Links
+    document.querySelectorAll(".navbar-nav.ms-auto a").forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
             loadModule(link.dataset.module);

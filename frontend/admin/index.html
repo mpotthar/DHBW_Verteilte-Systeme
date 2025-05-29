@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <title>Admin Webfrontend – Mein Urlaub</title>
@@ -7,112 +8,81 @@
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
     <style>
-        /* Responsive Sidebar */
-        @media (max-width: 767.99px) {
-            .sidebar {
-                position: static;
-                width: 100%;
-                padding: 15px;
-            }
-            .sidebar .nav-link {
-                display: inline-block;
-                padding: 0.5rem 1rem;
-            }
-            main {
-                padding-top: 20px;
-            }
-        }
-        @media (min-width: 768px) {
-            .sidebar {
-                position: fixed;
-                top: 56px;
-                bottom: 0;
-                left: 0;
-                width: 230px;
-                padding: 20px;
-                overflow-x: hidden;
-                overflow-y: auto;
-                background-color: #f8f9fa;
-                border-right: 1px solid #dee2e6;
-            }
-            main {
-                margin-left: 230px;
-            }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
         }
     </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!-- Navigationsleiste -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Admin – Mein Urlaub</a>
+            <a class="navbar-brand d-flex align-items-center mx-2" href="#">
+                <img src="/img/logo.png" alt="Mein Urlaub Logo" height="48" class="me-2">
+                <span>Admin UI</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav d-lg-none">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-module="hotels">Hotels</a>
+                        <a class="nav-link" href="#" data-module="hotels"><i class="bi bi-houses"></i> Hotels</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-module="bewertungen">Bewertungen</a>
+                        <a class="nav-link" href="#" data-module="fluege"><i class="bi bi-airplane"></i>
+                            Flugverbindungen</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-module="fluege">Flugverbindungen</a>
+                        <a class="nav-link" href="#" data-module="mietwagen"><i class="bi bi-car-front"></i>
+                            Mietwagen</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-module="mietwagen">Mietwagen</a>
+                        <a class="nav-link" href="#" data-module="bewertungen"><i class="bi bi-star"></i>
+                            Bewertungen</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-module="demodaten">Demo-Daten</a>
+                        <a class="nav-link" href="#" data-module="demodaten"><i class="bi bi-database-fill"></i>
+                            Demo-Daten</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar (sichtbar ab md-Größe) -->
-            <nav class="sidebar d-none d-md-block">
-                <div class="position-sticky">
-                    <ul class="nav flex-column" id="sidebarMenu">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#" data-module="hotels">
-                                <i class="bi bi-building"></i> Hotels
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-module="bewertungen">
-                                <i class="bi bi-star"></i> Bewertungen
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-module="fluege">
-                                <i class="bi bi-airplane"></i> Flugverbindungen
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-module="mietwagen">
-                                <i class="bi bi-car-front"></i> Mietwagen
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-module="demodaten">
-                                <i class="bi bi-database-fill"></i> Demo-Daten
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            
-            <!-- Hauptinhalt des Admininterfaces -->
-            <main class="col-12 col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4" id="mainContent">
+
+
+    <!-- Hauptinhalt des Admininterfaces -->
+    <main class="container-fluid px-0">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-9 col-xl-8 px-3 py-4" id="mainContent">
                 <!-- Dynamischer Content wird hier durch JS nachgeladen -->
-            </main>
+            </div>
         </div>
-    </div>
-    
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row d-flex align-items-center">
+                <div class="col-12 col-md-9">
+                    <a>&copy; 2025 Mein Urlaub - Ein Projekt im Rahmen der Vorlesung Verteilte Systeme an der DHBW
+                        Heilbronn</a>
+                </div>
+                <div class="col-12 col-md-3 d-flex justify-content-md-end">
+                    <a class="text-decoration-none link-light" href="/">
+                        <i class="bi bi-door-open"></i> Admin UI verlassen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Admin Page Funktionaltitäten -->
@@ -123,4 +93,5 @@
     <script src="js/mietwagen.js"></script>
     <script src="js/demodaten.js"></script>
 </body>
+
 </html>
