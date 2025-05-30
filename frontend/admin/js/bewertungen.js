@@ -148,7 +148,7 @@ function showReviewForm(review = null) {
                         <textarea class="form-control" name="beschreibung" rows="3" required>${review ? review.beschreibung : ''}</textarea>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label class="form-label">Sterne</label>
                             <select class="form-select" name="sterne" required>
                                 ${[1, 2, 3, 4, 5].map(i => `
@@ -156,7 +156,7 @@ function showReviewForm(review = null) {
                                 `).join('')}
                             </select>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label class="form-label">Dienstleistungstyp</label>
                             <select class="form-select" name="dienstleistungsTyp" required>
                                 <option value="hotel" ${review && review.dienstleistungsTyp === 'hotel' ? 'selected' : ''}>Hotel</option>
