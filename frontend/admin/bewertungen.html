@@ -57,8 +57,7 @@
                             Flugverbindungen</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="mietwagen.html"><i
-                                class="bi bi-car-front"></i>
+                        <a class="nav-link" href="mietwagen.html"><i class="bi bi-car-front"></i>
                             Mietwagen</a>
                     </li>
                     <li class="nav-item">
@@ -78,52 +77,48 @@
     </nav>
 
     <!-- Hauptinhalt des Admininterfaces -->
-    <main class="flex-grow-1 container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-11 px-1 py-4" id="mainContent">
-                <h2>Bewertungen</h2>
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <input type="text" id="reviewFilter" class="form-control" placeholder="Bewertungen filtern...">
-                    </div>
-                    <div class="col-md-3">
-                        <select id="serviceTypeFilter" class="form-select">
-                            <option value="alle">Alle Dienstleistungen</option>
-                            <option value="hotel">Hotels</option>
-                            <option value="flug">Flüge</option>
-                            <option value="mietwagen">Mietwagen</option>
-                        </select>
-                    </div>
-                    <div class="col-md-5 text-md-end">
-                        <button class="btn btn-success" onclick="showReviewForm()">
-                            <i class="bi bi-plus-circle"></i> Neue Bewertung
-                        </button>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-striped align-middle" id="reviewsTable">
-                        <thead>
-                            <tr>
-                                <th>Rezensent</th>
-                                <th>Titel</th>
-                                <th>Beschreibung</th>
-                                <th>Sterne</th>
-                                <th>Dienstleistung</th>
-                                <th>Datum</th>
-                                <th>Aktionen</th>
-                            </tr>
-                        </thead>
-                        <tbody id="reviewsList">
-                            <tr>
-                                <td colspan="7" class="text-center">Lade Bewertungen...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="reviewFormContainer"></div>
-                <div id="statusMessageReviews" class="alert d-none mt-3"></div>
+    <main class="flex-grow-1 container-fluid py-4">
+        <h2>Bewertungen</h2>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <input type="text" id="reviewFilter" class="form-control" placeholder="Bewertungen filtern...">
+            </div>
+            <div class="col-md-3">
+                <select id="serviceTypeFilter" class="form-select">
+                    <option value="alle">Alle Dienstleistungen</option>
+                    <option value="hotel">Hotels</option>
+                    <option value="flug">Flüge</option>
+                    <option value="mietwagen">Mietwagen</option>
+                </select>
+            </div>
+            <div class="col-md-5 text-md-end">
+                <button class="btn btn-success" onclick="showReviewForm()">
+                    <i class="bi bi-plus-circle"></i> Neue Bewertung
+                </button>
             </div>
         </div>
+        <div class="table-responsive">
+            <table class="table table-striped align-middle" id="reviewsTable">
+                <thead>
+                    <tr>
+                        <th>Rezensent</th>
+                        <th>Titel</th>
+                        <th>Beschreibung</th>
+                        <th>Sterne</th>
+                        <th>Dienstleistung</th>
+                        <th>Datum</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody id="reviewsList">
+                    <tr>
+                        <td colspan="7" class="text-center">Lade Bewertungen...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="reviewFormContainer"></div>
+        <div id="statusMessageReviews" class="alert d-none mt-3"></div>
     </main>
 
     <!-- Footer -->
