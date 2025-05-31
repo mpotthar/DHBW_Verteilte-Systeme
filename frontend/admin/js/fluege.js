@@ -2,44 +2,6 @@ const FLIGHTS_API_BASE_URL = '/api';
 let flightsData = [];
 
 function loadFlights() {
-    document.getElementById("mainContent").innerHTML = `
-        <h2>Flugverbindungen</h2>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <input type="text" id="flightFilter" class="form-control" placeholder="Flüge filtern...">
-            </div>
-            <div class="col-md-6 text-md-end">
-                <button class="btn btn-success" onclick="showFlightForm()">
-                    <i class="bi bi-plus-circle"></i> Neuer Flug
-                </button>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped align-middle" id="flightsTable">
-                <thead>
-                    <tr>
-                        <th>Start</th>
-                        <th>Ziel</th>
-                        <th>Abflug</th>
-                        <th>Ankunft</th>
-                        <th>Fluggesellschaft</th>
-                        <th>Flugnummer</th>
-                        <th>Preis</th>
-                        <th>Aktionen</th>
-                    </tr>
-                </thead>
-                <tbody id="flightsList">
-                    <tr>
-                        <td colspan="8" class="text-center">Lade Flüge...</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="flightFormContainer"></div>
-        <div id="statusMessageFlights" class="alert d-none mt-3"></div>
-    `;
-
-    // Event-Listener für die Suche nach dem Rendern setzen!
     document.getElementById('flightFilter').addEventListener('keyup', filterFlights);
 
     fetchFlights();
@@ -242,3 +204,6 @@ function filterFlights() {
     );
     displayFlights(filtered);
 }
+
+// Initialisierung nach Laden der Seite
+document.addEventListener('DOMContentLoaded', loadFlights);

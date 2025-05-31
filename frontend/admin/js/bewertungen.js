@@ -2,52 +2,8 @@ const REVIEWS_API_BASE_URL = '/api';
 let reviewsData = [];
 
 function loadBewertungen() {
-    document.getElementById("mainContent").innerHTML = `
-        <h2>Bewertungen</h2>
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <input type="text" id="reviewFilter" class="form-control" placeholder="Bewertungen filtern...">
-            </div>
-            <div class="col-md-3">
-                <select id="serviceTypeFilter" class="form-select">
-                    <option value="alle">Alle Dienstleistungen</option>
-                    <option value="hotel">Hotels</option>
-                    <option value="flug">Flüge</option>
-                    <option value="mietwagen">Mietwagen</option>
-                </select>
-            </div>
-            <div class="col-md-5 text-md-end">
-                <button class="btn btn-success" onclick="showReviewForm()">
-                    <i class="bi bi-plus-circle"></i> Neue Bewertung
-                </button>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped align-middle" id="reviewsTable">
-                <thead>
-                    <tr>
-                        <th>Rezensent</th>
-                        <th>Titel</th>
-                        <th>Beschreibung</th>
-                        <th>Sterne</th>
-                        <th>Dienstleistung</th>
-                        <th>Datum</th>
-                        <th>Aktionen</th>
-                    </tr>
-                </thead>
-                <tbody id="reviewsList">
-                    <tr>
-                        <td colspan="7" class="text-center">Lade Bewertungen...</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="reviewFormContainer"></div>
-        <div id="statusMessageReviews" class="alert d-none mt-3"></div>
-    `;
-
-    document.getElementById('reviewFilter').addEventListener('keyup', filterReviews);
-    document.getElementById('serviceTypeFilter').addEventListener('change', filterReviews);
+    document.getElementById('reviewFilter')?.addEventListener('keyup', filterReviews);
+    document.getElementById('serviceTypeFilter')?.addEventListener('change', filterReviews);
 
     fetchReviews();
 }
@@ -126,7 +82,8 @@ function formatDate(dateString) {
 }
 
 function showReviewForm(review = null) {
-    document.getElementById("reviewFormContainer").innerHTML = `
+    const container = document.getElementById("reviewFormContainer");
+    container.innerHTML = `
         <div class="card mt-4">
             <div class="card-header">
                 <h5>${review ? 'Bewertung bearbeiten' : 'Neue Bewertung anlegen'}</h5>
@@ -173,7 +130,6 @@ function showReviewForm(review = null) {
             </div>
         </div>
     `;
-
     document.getElementById("reviewForm").onsubmit = async function(e) {
         e.preventDefault();
         const formData = {
@@ -183,7 +139,6 @@ function showReviewForm(review = null) {
             sterne: parseInt(this.sterne.value),
             dienstleistungsTyp: this.dienstleistungsTyp.value
         };
-        
         if (review && review._id) {
             await updateReview({ ...formData, _id: review._id });
         } else {
@@ -257,19 +212,16 @@ async function deleteReview(id) {
 function filterReviews() {
     const filterText = document.getElementById("reviewFilter").value.toUpperCase();
     const serviceTypeFilter = document.getElementById("serviceTypeFilter").value;
-    
     let filtered = reviewsData.filter(review => {
-        // Text-Filter
         const matchesText = 
             (review.nameRezensent && review.nameRezensent.toUpperCase().includes(filterText)) ||
             (review.titel && review.titel.toUpperCase().includes(filterText)) ||
             (review.beschreibung && review.beschreibung.toUpperCase().includes(filterText));
-            
-        // Service-Typ-Filter
         const matchesType = serviceTypeFilter === 'alle' || review.dienstleistungsTyp === serviceTypeFilter;
-        
         return matchesText && matchesType;
     });
-    
     displayReviews(filtered);
 }
+
+// Initialisierung nach Laden der Seite
+document.addEventListener('DOMContentLoaded', loadBewertungen);

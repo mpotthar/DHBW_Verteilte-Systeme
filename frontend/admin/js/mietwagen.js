@@ -2,44 +2,6 @@ const CARS_API_BASE_URL = '/api';
 let carsData = [];
 
 function loadMietwagen() {
-    document.getElementById("mainContent").innerHTML = `
-        <h2>Mietwagen</h2>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <input type="text" id="carFilter" class="form-control" placeholder="Mietwagen filtern...">
-            </div>
-            <div class="col-md-6 text-md-end">
-                <button class="btn btn-success" onclick="showCarForm()">
-                    <i class="bi bi-plus-circle"></i> Neuer Mietwagen
-                </button>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped align-middle" id="carsTable">
-                <thead>
-                    <tr>
-                        <th>Typ</th>
-                        <th>Hersteller</th>
-                        <th>Modell</th>
-                        <th>Sitzplätze</th>
-                        <th>Getriebe</th>
-                        <th>Versicherung</th>
-                        <th>Preis/24h</th>
-                        <th>Bild</th>
-                        <th>Aktionen</th>
-                    </tr>
-                </thead>
-                <tbody id="carsList">
-                    <tr>
-                        <td colspan="9" class="text-center">Lade Mietwagen...</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="carFormContainer"></div>
-        <div id="statusMessageCars" class="alert d-none mt-3"></div>
-    `;
-
     document.getElementById('carFilter').addEventListener('keyup', filterCars);
 
     fetchCars();
@@ -242,3 +204,6 @@ function filterCars() {
     );
     displayCars(filtered);
 }
+
+// Initialisierung nach Laden der Seite
+document.addEventListener('DOMContentLoaded', loadMietwagen);

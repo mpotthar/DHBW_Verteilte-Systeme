@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Interface Startseite | Mein Urlaub</title>
+    <title>Admin Webfrontend | Mein Urlaub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/img/favicon-admin.ico" type="image/x-icon">
     <!-- Bootstrap CDN -->
@@ -30,11 +30,6 @@
             color: white;
             padding: 20px 0;
             margin-top: 40px;
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            color: #69becf;
         }
     </style>
 </head>
@@ -71,7 +66,7 @@
                             Bewertungen</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="demodaten.html"><i class="bi bi-database"></i>
+                        <a class="nav-link active" href="demodaten.html"><i class="bi bi-database"></i>
                             Demo-Daten</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/"><i class="bi bi-door-open"></i> Admin UI
@@ -82,72 +77,55 @@
         </div>
     </nav>
 
-    <!-- Hauptinhalt -->
+    <!-- Hauptinhalt des Admininterfaces -->
     <main class="flex-grow-1 container-fluid">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-11 px-1 py-4" id="mainContent">
-                <h2>Dashboard</h2>
-                <div class="row g-4">
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body d-flex align-items-center">
-                                <i class="bi bi-houses card-icon me-3"></i>
-                                <div>
-                                    <h5 class="card-title">Hotels</h5>
-                                    <p class="card-text fs-4" id="hotelsCount">Lade...</p>
-                                    <a href="hotels.html" class="btn btn-primary btn-sm">Bearbeiten</a>
-                                </div>
+                <h2>Demo-Daten</h2>
+                <div class="row mb-4">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Datenbanken mit Demo-Daten befüllen</h5>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body d-flex align-items-center">
-                                <i class="bi bi-airplane card-icon me-3"></i>
-                                <div>
-                                    <h5 class="card-title">Flugverbindungen</h5>
-                                    <p class="card-text fs-4" id="flightsCount">Lade...</p>
-                                    <a href="fluege.html" class="btn btn-primary btn-sm">Bearbeiten</a>
+                            <div class="card-body">
+                                <p>Hier können Sie Demo-Daten für alle Services generieren.</p>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="clearExistingData">
+                                    <label class="form-check-label" for="clearExistingData">
+                                        Bestehende Daten vor dem Import löschen
+                                    </label>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body d-flex align-items-center">
-                                <i class="bi bi-car-front card-icon me-3"></i>
-                                <div>
-                                    <h5 class="card-title">Mietwagen</h5>
-                                    <p class="card-text fs-4" id="carsCount">Lade...</p>
-                                    <a href="mietwagen.html" class="btn btn-primary btn-sm">Bearbeiten</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body d-flex align-items-center">
-                                <i class="bi bi-star card-icon me-3"></i>
-                                <div>
-                                    <h5 class="card-title">Bewertungen</h5>
-                                    <p class="card-text fs-4" id="reviewsCount">Lade...</p>
-                                    <a href="bewertungen.html" class="btn btn-primary btn-sm">Bearbeiten</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body d-flex align-items-center">
-                                <i class="bi bi-database card-icon me-3"></i>
-                                <div>
-                                    <h5 class="card-title">Demo-Daten</h5>
-                                    <a href="demodaten.html" class="btn btn-primary btn-sm">Anlegen</a>
+
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button class="btn btn-primary" onclick="createAllDemoData()">
+                                        <i class="bi bi-database-fill-check"></i> Alle Demo-Daten erstellen
+                                    </button>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown">
+                                            Einzelnen Service befüllen
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"
+                                                    onclick="createDemoDataForService('hotels')">Hotels</a></li>
+                                            <li><a class="dropdown-item" href="#"
+                                                    onclick="createDemoDataForService('reviews')">Bewertungen</a></li>
+                                            <li><a class="dropdown-item" href="#"
+                                                    onclick="createDemoDataForService('flights')">Flugverbindungen</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#"
+                                                    onclick="createDemoDataForService('cars')">Mietwagen</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div id="demoDataStatus" class="alert d-none"></div>
+                <div class="row mt-4" id="demoDataResults"></div>
             </div>
         </div>
     </main>
@@ -164,7 +142,7 @@
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <!-- Admin Page Funktionalitäten -->
-    <script src="js/index.js"></script>
+    <script src="js/demodaten.js"></script>
 </body>
 
 </html>

@@ -2,42 +2,8 @@ const API_BASE_URL = '/api';
 let hotelsData = []; // Für Filterfunktion
 
 function loadHotels() {
-    document.getElementById("mainContent").innerHTML = `
-        <h2>Hotels</h2>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <input type="text" id="hotelFilter" class="form-control" placeholder="Hotels filtern...">
-            </div>
-            <div class="col-md-6 text-md-end">
-                <button class="btn btn-success" onclick="showHotelForm()">
-                    <i class="bi bi-plus-circle"></i> Neues Hotel
-                </button>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped align-middle" id="hotelsTable">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Ort</th>
-                        <th>Sterne</th>
-                        <th>Zimmerzahl</th>
-                        <th>Preis/Nacht</th>
-                        <th>Aktionen</th>
-                    </tr>
-                </thead>
-                <tbody id="hotelsList">
-                    <tr>
-                        <td colspan="6" class="text-center">Lade Hotels...</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="hotelFormContainer"></div>
-        <div id="statusMessage" class="alert d-none mt-3"></div>
-    `;
-
     document.getElementById("hotelFilter").addEventListener("keyup", filterHotels);
+
     fetchHotels();
 }
 
@@ -222,3 +188,6 @@ async function deleteHotel(id) {
         }
     }
 }
+
+// Initialisierung nach Laden der Seite
+document.addEventListener('DOMContentLoaded', loadHotels);

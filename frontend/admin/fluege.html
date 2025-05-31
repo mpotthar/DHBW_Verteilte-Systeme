@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Interface Startseite | Mein Urlaub</title>
+    <title>Admin Webfrontend | Mein Urlaub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/img/favicon-admin.ico" type="image/x-icon">
     <!-- Bootstrap CDN -->
@@ -31,11 +31,6 @@
             padding: 20px 0;
             margin-top: 40px;
         }
-
-        .card-icon {
-            font-size: 2.5rem;
-            color: #69becf;
-        }
     </style>
 </head>
 
@@ -58,7 +53,7 @@
                             Hotels</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="fluege.html"><i class="bi bi-airplane"></i>
+                        <a class="nav-link active" href="fluege.html"><i class="bi bi-airplane"></i>
                             Flugverbindungen</a>
                     </li>
                     <li class="nav-item">
@@ -82,72 +77,44 @@
         </div>
     </nav>
 
-    <!-- Hauptinhalt -->
+    <!-- Hauptinhalt des Admininterfaces -->
     <main class="flex-grow-1 container-fluid">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-11 px-1 py-4" id="mainContent">
-                <h2>Dashboard</h2>
-                <div class="row g-4">
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body d-flex align-items-center">
-                                <i class="bi bi-houses card-icon me-3"></i>
-                                <div>
-                                    <h5 class="card-title">Hotels</h5>
-                                    <p class="card-text fs-4" id="hotelsCount">Lade...</p>
-                                    <a href="hotels.html" class="btn btn-primary btn-sm">Bearbeiten</a>
-                                </div>
-                            </div>
-                        </div>
+                <h2>Flugverbindungen</h2>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input type="text" id="flightFilter" class="form-control" placeholder="Flüge filtern...">
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body d-flex align-items-center">
-                                <i class="bi bi-airplane card-icon me-3"></i>
-                                <div>
-                                    <h5 class="card-title">Flugverbindungen</h5>
-                                    <p class="card-text fs-4" id="flightsCount">Lade...</p>
-                                    <a href="fluege.html" class="btn btn-primary btn-sm">Bearbeiten</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body d-flex align-items-center">
-                                <i class="bi bi-car-front card-icon me-3"></i>
-                                <div>
-                                    <h5 class="card-title">Mietwagen</h5>
-                                    <p class="card-text fs-4" id="carsCount">Lade...</p>
-                                    <a href="mietwagen.html" class="btn btn-primary btn-sm">Bearbeiten</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body d-flex align-items-center">
-                                <i class="bi bi-star card-icon me-3"></i>
-                                <div>
-                                    <h5 class="card-title">Bewertungen</h5>
-                                    <p class="card-text fs-4" id="reviewsCount">Lade...</p>
-                                    <a href="bewertungen.html" class="btn btn-primary btn-sm">Bearbeiten</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body d-flex align-items-center">
-                                <i class="bi bi-database card-icon me-3"></i>
-                                <div>
-                                    <h5 class="card-title">Demo-Daten</h5>
-                                    <a href="demodaten.html" class="btn btn-primary btn-sm">Anlegen</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-6 text-md-end">
+                        <button class="btn btn-success" onclick="showFlightForm()">
+                            <i class="bi bi-plus-circle"></i> Neuer Flug
+                        </button>
                     </div>
                 </div>
+                <div class="table-responsive">
+                    <table class="table table-striped align-middle" id="flightsTable">
+                        <thead>
+                            <tr>
+                                <th>Start</th>
+                                <th>Ziel</th>
+                                <th>Abflug</th>
+                                <th>Ankunft</th>
+                                <th>Fluggesellschaft</th>
+                                <th>Flugnummer</th>
+                                <th>Preis</th>
+                                <th>Aktionen</th>
+                            </tr>
+                        </thead>
+                        <tbody id="flightsList">
+                            <tr>
+                                <td colspan="8" class="text-center">Lade Flüge...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="flightFormContainer"></div>
+                <div id="statusMessageFlights" class="alert d-none mt-3"></div>
             </div>
         </div>
     </main>
@@ -164,7 +131,7 @@
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <!-- Admin Page Funktionalitäten -->
-    <script src="js/index.js"></script>
+    <script src="js/fluege.js"></script>
 </body>
 
 </html>
