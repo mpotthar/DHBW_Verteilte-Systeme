@@ -1,12 +1,14 @@
 const API_BASE_URL = '/api';
-let hotelsData = []; // Für Filterfunktion
+let hotelsData = [];
 
+// Erstelle die Filterfunktion und lade Hotels
 function loadHotels() {
     document.getElementById("hotelFilter").addEventListener("keyup", filterHotels);
 
     fetchHotels();
 }
 
+// Fetch Hotels von der API
 async function fetchHotels() {
     try {
         const response = await fetch(`${API_BASE_URL}/hotels`);
@@ -21,6 +23,8 @@ async function fetchHotels() {
     }
 }
 
+// Zeigt die Hotels in der Tabelle an
+// Input: hotels - Array von Hotel-Objekten
 function displayHotels(hotels) {
     const hotelsList = document.getElementById("hotelsList");
     if (!hotels || hotels.length === 0) {
@@ -46,6 +50,7 @@ function displayHotels(hotels) {
     `).join('');
 }
 
+// Filtert die Hotels basierend auf dem eingegebenen Text
 function filterHotels() {
     const filter = document.getElementById("hotelFilter").value.toUpperCase();
     const filtered = hotelsData.filter(hotel =>
@@ -55,6 +60,8 @@ function filterHotels() {
     displayHotels(filtered);
 }
 
+// Zeigt das Formular zum Anlegen oder Bearbeiten eines Hotels an
+// Input: hotel - Optionales Hotel-Objekt zum Bearbeiten, sonst leer
 function showHotelForm(hotel = null) {
     document.getElementById("hotelFormContainer").innerHTML = `
         <div class="card mt-4">
@@ -127,10 +134,13 @@ function showHotelForm(hotel = null) {
     }
 }
 
+// Schließt das Formular
 function cancelForm() {
     document.getElementById("hotelFormContainer").innerHTML = "";
 }
 
+// Zeigt eine Statusmeldung an
+// Input: message - Die anzuzeigende Nachricht, type - Typ der Nachricht ('success', 'danger', etc.)
 function showStatusMessage(message, type = 'success') {
     const statusElement = document.getElementById("statusMessage");
     statusElement.textContent = message;
@@ -140,6 +150,8 @@ function showStatusMessage(message, type = 'success') {
     }, 3000);
 }
 
+// Funktionen zum Erstellen, Aktualisieren und Löschen
+// Input: hotelData - Objekt mit den Flugdaten
 async function createHotel(hotelData) {
     try {
         const response = await fetch(`${API_BASE_URL}/hotels`, {

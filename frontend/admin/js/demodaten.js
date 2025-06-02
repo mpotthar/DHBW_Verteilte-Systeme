@@ -1,3 +1,4 @@
+// Löscht alle Daten für einen bestimmten Service, iteriert über alle Einträge und lösche sie einzeln
 async function clearAllDataForService(serviceName) {
     const response = await fetch(`/api/${getEndpointForService(serviceName)}`);
     if (!response.ok) {
@@ -30,6 +31,7 @@ async function clearAllDataForService(serviceName) {
     };
 }
 
+// Funktion zum Erstellen von Demo-Daten für alle Services
 async function createAllDemoData() {
     showStatus("Erstelle Demo-Daten für alle Services...", "info");
     
@@ -56,6 +58,8 @@ async function createAllDemoData() {
     }
 }
 
+// Funktion zum Erstellen von Demo-Daten für einen bestimmten Service
+// Input: serviceName - Name des Services
 async function createDemoDataForService(serviceName, shouldClear = null, showResult = true) {
     if (shouldClear === null) {
         shouldClear = document.getElementById("clearExistingData").checked;
@@ -119,12 +123,15 @@ async function createDemoDataForService(serviceName, shouldClear = null, showRes
     }
 }
 
+// Zeigt den Status der Demo-Daten-Erstellung an
+// Input: message - Die anzuzeigende Nachricht, type - Typ der Nachricht ('success', 'danger', etc.)
 function showStatus(message, type) {
     const statusElement = document.getElementById("demoDataStatus");
     statusElement.textContent = message;
     statusElement.className = `alert alert-${type}`;
 }
 
+// Erstellt eine Ergebnis-Karte für die Demo-Daten-Erstellung
 function createResultCard(service, result) {
     return `
     <div class="col-md-6 col-lg-3 mb-3">
@@ -141,6 +148,10 @@ function createResultCard(service, result) {
     </div>`;
 }
 
+// Hilfsfunktionen, um den Endpunkt und Titel für einen Service zu erhalten
+// Input: serviceName - Name des Services
+// Output: Endpunkt-Name oder Titel für den Service
+// (Durch Anpassung der Namen nicht mehr erforderlich, nur zwecks Wartbarkeit.)
 function getEndpointForService(serviceName) {
     switch(serviceName) {
         case 'hotels': return 'hotels';
@@ -151,6 +162,9 @@ function getEndpointForService(serviceName) {
     }
 }
 
+// Hilfsfunktion, um den Titel für einen Service zu erhalten
+// Input: serviceName - Name des Services
+// Output: Titel für den Service
 function getTitleForService(serviceName) {
     switch(serviceName) {
         case 'hotels': return 'Hotels';
@@ -161,6 +175,9 @@ function getTitleForService(serviceName) {
     }
 }
 
+// Funktion, um Demo-Daten für einen bestimmten Service zu erhalten
+// Input: serviceName - Name des Services
+// Output: Array von Demo-Daten für den Service
 function getDemoDataForService(serviceName) {
     switch(serviceName) {
         case 'hotels':

@@ -1,6 +1,7 @@
 const REVIEWS_API_BASE_URL = '/api';
 let reviewsData = [];
 
+// Erstelle Filterfunktion und lade Bewertungen
 function loadBewertungen() {
     document.getElementById('reviewFilter')?.addEventListener('keyup', filterReviews);
     document.getElementById('serviceTypeFilter')?.addEventListener('change', filterReviews);
@@ -8,6 +9,7 @@ function loadBewertungen() {
     fetchReviews();
 }
 
+// Fetch Bewertungen von der API
 async function fetchReviews() {
     try {
         const response = await fetch(`${REVIEWS_API_BASE_URL}/reviews`);
@@ -21,6 +23,8 @@ async function fetchReviews() {
     }
 }
 
+// Zeigt die Bewertungen in der Tabelle an
+// Input: reviews - Array von Bewertungs-Objekten
 function displayReviews(reviews) {
     const reviewsList = document.getElementById("reviewsList");
     if (!reviews || reviews.length === 0) {
@@ -47,11 +51,13 @@ function displayReviews(reviews) {
     `).join('');
 }
 
+// Kürze Text auf eine maximale Länge und füge "..." hinzu, wenn er zu lang ist
 function truncateText(text, maxLength) {
     if (!text) return '';
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
 }
 
+// Iteriere über die Sterneanzahl und generiere HTML (Bootstrap Icons) für die Sterne
 function getStars(count) {
     let stars = '';
     for (let i = 0; i < count; i++) {
@@ -60,6 +66,7 @@ function getStars(count) {
     return stars;
 }
 
+// Liefert den Label-Text für den Dienstleistungstyp
 function getServiceTypeLabel(type) {
     switch(type) {
         case 'hotel': return 'Hotel';
@@ -69,6 +76,7 @@ function getServiceTypeLabel(type) {
     }
 }
 
+// Formatierte Anzeige von Datum nach deutschem Standard
 function formatDate(dateString) {
     if (!dateString) return '';
     const date = new Date(dateString);
@@ -81,6 +89,8 @@ function formatDate(dateString) {
     });
 }
 
+// Zeigt das Formular zum Anlegen oder Bearbeiten einer Bewertung an
+// Input: review - Optionales Bewertungs-Objekt zum Bearbeiten, sonst leer
 function showReviewForm(review = null) {
     const container = document.getElementById("reviewFormContainer");
     container.innerHTML = `
@@ -147,10 +157,13 @@ function showReviewForm(review = null) {
     };
 }
 
+// Schließt das Formular
 function cancelReviewForm() {
     document.getElementById("reviewFormContainer").innerHTML = "";
 }
 
+// Zeigt eine Statusmeldung an
+// Input: message - Die anzuzeigende Nachricht, type - Typ der Nachricht ('success', 'danger', etc.)
 function showStatusMessageReviews(message, type = 'success') {
     const statusElement = document.getElementById("statusMessageReviews");
     statusElement.textContent = message;
@@ -160,6 +173,8 @@ function showStatusMessageReviews(message, type = 'success') {
     }, 3000);
 }
 
+// Funktionen zum Erstellen, Aktualisieren und Löschen
+// Input: reviewData - Objekt mit den Flugdaten
 async function createReview(reviewData) {
     try {
         const response = await fetch(`${REVIEWS_API_BASE_URL}/reviews`, {
@@ -209,6 +224,7 @@ async function deleteReview(id) {
     }
 }
 
+// Filtert die Bewertungen basierend auf dem eingegebenen Text und dem ausgewählten Dienstleistungstyp
 function filterReviews() {
     const filterText = document.getElementById("reviewFilter").value.toUpperCase();
     const serviceTypeFilter = document.getElementById("serviceTypeFilter").value;

@@ -1,12 +1,14 @@
 const FLIGHTS_API_BASE_URL = '/api';
 let flightsData = [];
 
+// Erstelle die Filterfunktion und lade Flüge
 function loadFlights() {
     document.getElementById('flightFilter').addEventListener('keyup', filterFlights);
 
     fetchFlights();
 }
 
+// Fetch Flüge von der API
 async function fetchFlights() {
     try {
         const response = await fetch(`${FLIGHTS_API_BASE_URL}/flights`);
@@ -20,6 +22,8 @@ async function fetchFlights() {
     }
 }
 
+// Zeigt die Flüge in der Tabelle an
+// Input: flights - Array von Flug-Objekten
 function displayFlights(flights) {
     const flightsList = document.getElementById("flightsList");
     if (!flights || flights.length === 0) {
@@ -47,6 +51,7 @@ function displayFlights(flights) {
     `).join('');
 }
 
+// Formatierte Anzeige von Datum und Uhrzeit nach deutschem Standard
 function formatDateTime(dateString) {
     if (!dateString) return '';
     const date = new Date(dateString);
@@ -56,6 +61,8 @@ function formatDateTime(dateString) {
     });
 }
 
+// Zeigt das Formular zum Anlegen oder Bearbeiten eines Flugs an
+// Input: flight - Optionales Flug-Objekt zum Bearbeiten, sonst leer
 function showFlightForm(flight = null) {
     document.getElementById("flightFormContainer").innerHTML = `
         <div class="card mt-4">
@@ -125,6 +132,7 @@ function showFlightForm(flight = null) {
     }
 }
 
+// Formatiert ein Datum für die Eingabe in ein datetime-local Feld
 function toInputDateTime(dateString) {
     if (!dateString) return '';
     const date = new Date(dateString);
@@ -132,10 +140,13 @@ function toInputDateTime(dateString) {
     return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
 
+// Schließt das Formular 
 function cancelFlightForm() {
     document.getElementById("flightFormContainer").innerHTML = "";
 }
 
+// Zeigt eine Statusmeldung an
+// Input: message - Die anzuzeigende Nachricht, type - Typ der Nachricht ('success', 'danger', etc.)
 function showStatusMessageFlights(message, type = 'success') {
     const statusElement = document.getElementById("statusMessageFlights");
     statusElement.textContent = message;
@@ -145,6 +156,8 @@ function showStatusMessageFlights(message, type = 'success') {
     }, 3000);
 }
 
+// Funktionen zum Erstellen, Aktualisieren und Löschen
+// Input: flightData - Objekt mit den Flugdaten
 async function createFlight(flightData) {
     try {
         const response = await fetch(`${FLIGHTS_API_BASE_URL}/flights`, {
@@ -194,6 +207,7 @@ async function deleteFlight(id) {
     }
 }
 
+// Filtert die Flüge basierend auf dem eingegebenen Text
 function filterFlights() {
     const filter = document.getElementById("flightFilter").value.toUpperCase();
     let filtered = flightsData.filter(flight =>

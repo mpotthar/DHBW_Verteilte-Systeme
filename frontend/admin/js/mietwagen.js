@@ -1,12 +1,14 @@
 const CARS_API_BASE_URL = '/api';
 let carsData = [];
 
+// Erstelle die Filterfunktion und lade die Mietwagen
 function loadMietwagen() {
     document.getElementById('carFilter').addEventListener('keyup', filterCars);
 
     fetchCars();
 }
 
+// Fetch Mietwagen von der API
 async function fetchCars() {
     try {
         const response = await fetch(`${CARS_API_BASE_URL}/cars`);
@@ -20,6 +22,8 @@ async function fetchCars() {
     }
 }
 
+// Zeigt die Mietwagen in der Tabelle an
+// Input: cars - Array von Auto-Objekten
 function displayCars(cars) {
     const carsList = document.getElementById("carsList");
     if (!cars || cars.length === 0) {
@@ -50,6 +54,8 @@ function displayCars(cars) {
     `).join('');
 }
 
+// Zeigt das Formular zum Erstellen oder Bearbeiten eines Mietwagens an
+// Input: car - Optional, das Auto-Objekt zum Bearbeiten, sonst leer
 function showCarForm(car = null) {
     document.getElementById("carFormContainer").innerHTML = `
         <div class="card mt-4">
@@ -131,10 +137,13 @@ function showCarForm(car = null) {
     }
 }
 
+// Schließt das Formular
 function cancelCarForm() {
     document.getElementById("carFormContainer").innerHTML = "";
 }
 
+// Zeigt eine Statusmeldung an
+// Input: message - Die anzuzeigende Nachricht, type - Typ der Nachricht ('success', 'danger', etc.)
 function showStatusMessageCars(message, type = 'success') {
     const statusElement = document.getElementById("statusMessageCars");
     statusElement.textContent = message;
@@ -144,6 +153,8 @@ function showStatusMessageCars(message, type = 'success') {
     }, 3000);
 }
 
+// Funktionen zum Erstellen, Aktualisieren und Löschen
+// Input: carData - Objekt mit den Flugdaten
 async function createCar(carData) {
     try {
         const response = await fetch(`${CARS_API_BASE_URL}/cars`, {
@@ -193,6 +204,7 @@ async function deleteCar(id) {
     }
 }
 
+// Filtert die Mietwagen basierend auf dem eingegebenen Text
 function filterCars() {
     const filter = document.getElementById("carFilter").value.toUpperCase();
     let filtered = carsData.filter(car =>
