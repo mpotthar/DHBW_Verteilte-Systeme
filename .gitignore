@@ -1,0 +1,38 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.env
+.env.*
+
+# Build- und Cache-Dateien
+dist/
+build/
+.cache/
+coverage/
+*.log
+
+# Docker
+*.pid
+*.seed
+docker-compose.override.yml
+docker-compose.local.yml
+
+# MongoDB Datenbanken (lokale Volumes)
+mongo-*/data/
+data/
+*.db
+*.lock
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# IDEs & Betriebssystem
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
