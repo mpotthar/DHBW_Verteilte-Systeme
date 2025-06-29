@@ -1,0 +1,81 @@
+services:
+  # Gemeinsame MongoDB-Instanz für alle Microservices
+  mongodb:
+    image: mongo:latest
+    container_name: mein-urlaub-mongodb
+    command: mongod --quiet --logpath /dev/null
+    volumes:
+      - mongodb-data:/data/db
+      - mongodb-config:/data/configdb
+    networks:
+      - backend-network
+
+  # Microservices
+  hotel-service:
+    build: ./services/hotel-service
+    container_name: mein-urlaub-hotel-service
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/hotel-service
+      - PORT=3001
+    depends_on:
+      - mongodb
+    networks:
+      - backend-network
+
+  flug-service:
+    build: ./services/flugverbindung-service
+    container_name: mein-urlaub-flug-service
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/flug-service
+      - PORT=3002
+    depends_on:
+      - mongodb
+    networks:
+      - backend-network
+
+  bewertungs-service:
+    build: ./services/bewertungs-service
+    container_name: mein-urlaub-bewertungs-service
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/bewertungs-service
+      - PORT=3003
+    depends_on:
+      - mongodb
+    networks:
+      - backend-network
+
+  mietwagen-service:
+    build: ./services/mietwagen-service
+    container_name: mein-urlaub-mietwagen-service
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/mietwagen-service
+      - PORT=3004
+    depends_on:
+      - mongodb
+    networks:
+      - backend-network
+
+  # Nginx Webserver für die Frontends
+  nginx:
+    build: ./nginx
+    container_name: mein-urlaub-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - hotel-service
+      - flug-service
+      - bewertungs-service
+      - mietwagen-service
+    networks:
+      - frontend-network
+      - backend-network
+
+networks:
+  frontend-network:
+  backend-network:
+
+volumes:
+  mongodb-data:
+  mongodb-config:

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Webfrontend: Mietwagen | Mein Urlaub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/img/favicon-admin.ico" type="image/x-icon">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigationsleiste -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center mx-2" href="/admin">
+                <img src="/img/logo.png" alt="Mein Urlaub Logo" height="48" class="me-3">
+                <i class="bi bi-tools" style="color: #69becf;"></i>
+                <span>&nbspAdmin UI</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotels.html"><i class="bi bi-houses"></i>
+                            Hotels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fluege.html"><i class="bi bi-airplane"></i>
+                            Flugverbindungen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="mietwagen.html"><i class="bi bi-car-front"></i>
+                            Mietwagen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bewertungen.html"><i class="bi bi-star"></i>
+                            Bewertungen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="demodaten.html"><i class="bi bi-database"></i>
+                            Demo-Daten</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="bi bi-door-open"></i> Admin UI
+                            verlassen</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hauptinhalt des Admininterfaces -->
+    <main class="flex-grow-1 container-fluid py-4">
+        <h2>Mietwagen</h2>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <input type="text" id="carFilter" class="form-control" placeholder="Mietwagen filtern...">
+            </div>
+            <div class="col-md-6 text-md-end">
+                <button class="btn btn-success" onclick="showCarForm()">
+                    <i class="bi bi-plus-circle"></i> Neuer Mietwagen
+                </button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped align-middle" id="carsTable">
+                <thead>
+                    <tr>
+                        <th>Typ</th>
+                        <th>Hersteller</th>
+                        <th>Modell</th>
+                        <th>Sitzplätze</th>
+                        <th>Getriebe</th>
+                        <th>Versicherung</th>
+                        <th>Preis/24h</th>
+                        <th>Bild</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody id="carsList">
+                    <tr>
+                        <td colspan="9" class="text-center">Lade Mietwagen...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="carFormContainer"></div>
+        <div id="statusMessageCars" class="alert d-none mt-3"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <a>&copy; 2025 Mein Urlaub - Ein Projekt im Rahmen der Vorlesung Verteilte Systeme an der DHBW Heilbronn</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+    <!-- Admin Page Funktionalitäten -->
+    <script src="js/mietwagen.js"></script>
+</body>
+
+</html>
